@@ -80,3 +80,21 @@ de commit rédigé et vos fichiers séléctionnés, effectuez votre commit en cl
 sur le bouton "Commit to Master" en bas de l'écran.
 
 1.3) Enfin pour effectuer le push, cliquez sur le bouton "Sync" en haut à droite de l'écran.
+
+2) Utilisation avancée
+
+2.1) Historique des commits
+Via l'onglet "History" en haut au centre de l'écran, vous pouvez consulter la chronologie des commits effectués
+par les membres de l'équipe. Vous pouvez également consulter chaque commit et voir précisément les modifications
+effectuées sur les fichiers à droite de l'écran.
+
+2.2) Annuler modification d'un fichier
+Sur l'onglet "Changes", effectuez un clic droit sur un fichier modifié afin de faire apparaitre un menu
+contextuel. L'option "Discard changes" vous permet d'annuler les changements effectués sur ce fichier particulier,
+et de le restaurer à l'état de la synchronisation précédente.
+
+2.3) Ignorer un fichier 
+Sur l'onglet "Changes", effectuez un clic droit sur un fichier modifié afin de faire apparaitre un menu
+contextuel. L'option "Ignore file" vous permet d'ignorer ce fichier dans votre commit. Il disparaitra alors
+de la liste. /!\ Un fichier ignoré n'apparaîtra PLUS dans la liste des changements, mêmes dans vos commits
+suivants.
