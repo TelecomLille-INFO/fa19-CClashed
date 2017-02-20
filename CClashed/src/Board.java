@@ -1,19 +1,21 @@
+import java.util.List;
+
 /**
-	La classe Board représente le plateau de jeu.
+	La classe Board représente le plateau de jeu
 */
 public class Board {
 
-	/** Représente la hauteur du plateau de jeu. */
+	/** Représente la hauteur du plateau de jeu */
 	private int height;
-	/** Représente la largeur du plateau de jeu. */
+	/** Représente la largeur du plateau de jeu */
 	private int width;
-	/** Représente le tableau de bonbons. */
+	/** Représente le tableau de bonbons */
 	private Candy grid[][];
-	/** Représente une liste de mouvements possibles sur le plateau de jeu. */
+	/** Représente une liste de mouvements possibles sur le plateau de jeu */
 	private List<Move> possibleMoves;
 	
 	/**
-		Constructeur de plateau.
+		Constructeur de plateau
 	*/
 	public Board() {
 		this.height = 8;
@@ -22,31 +24,64 @@ public class Board {
 	}
 	
 	/**
-		Vérifier si le tour de jeu est terminé.
+	*	Accesseur
+	*	@return Entier représentant la hauteur du plateau de jeu
+	*/
+	public int getHeight() {
+		return this.height;
+	}
+	
+	/**
+	*	Mutateur
+	*	@param height Entier représentant la hauteur du plateau de jeu
+	*/
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	
+	/**
+	*	Accesseur
+	*	@return Entier représentant la largeur du plateau de jeu
+	*/
+	public int getWidth() {
+		return this.width;
+	}
+	
+	/**
+	*	Mutateur
+	*	@param width Entier représentant la largeur du plateau de jeu
+	*/
+	public void setWidth(int width) {
+		this.width = width;
+	}
+	
+	/**
+		Vérifier si le tour de jeu est terminé
+		@return True si le tour de jeu est terminé, false sinon
 	*/
 	public boolean checkTurnHasEnded() {
 	
 	}
 	
 	/**
-		Vérifier si un mouvement est possible sur le plateau de jeu.
-		@param m Mouvement dont on veut vérifier la possibilité.
-		@return True si le mouvement est possible, False sinon.
+		Vérifier si un mouvement est possible sur le plateau de jeu
+		@param m Mouvement dont on veut vérifier la possibilité
+		@return True si le mouvement est possible, false sinon
 	*/
 	public boolean checkMove(Move m) {
 	
 	}
 	
 	/**
-		Effectuer un mouvement sur le plateau de jeu.
-		@param m Mouvement à effectuer.
+		Effectuer un mouvement sur le plateau de jeu
+		@param m Mouvement à effectuer
 	*/
 	public void executeMove(Move m) {
 	
 	}
 	
 	/**
-		Afficher l'état d'un plateau.
+		Afficher l'état d'un plateau
 	*/
 	public String toString() {
 		
