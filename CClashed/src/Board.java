@@ -60,31 +60,34 @@ public class Board {
 		@return True si le tour de jeu est terminé, false sinon
 	*/
 	public boolean checkTurnHasEnded() {
-	
+		System.out.println("Appel de la méthode checkTurnHasEnded() de la classe Board");
+		return true;
 	}
 	
 	/**
-		Vérifier si un mouvement est possible sur le plateau de jeu
-		@param m Mouvement dont on veut vérifier la possibilité
-		@return True si le mouvement est possible, false sinon
+	*	Vérifier si un mouvement est possible sur le plateau de jeu
+	*	@param m Mouvement dont on veut vérifier la possibilité
+	*	@return True si le mouvement est possible, false sinon
 	*/
 	public boolean checkMove(Move m) {
-	
+		System.out.println("Appel de la méthode checkMove(Move m) de la classe Board");
+		return true;
 	}
 	
 	/**
-		Effectuer un mouvement sur le plateau de jeu
-		@param m Mouvement à effectuer
+	*	Effectuer un mouvement sur le plateau de jeu
+	*	@param m Mouvement à effectuer
 	*/
 	public void executeMove(Move m) {
-	
+		System.out.println("Appel de la méthode executeMove(Move m) de la classe Board");
 	}
 	
 	/**
-		Afficher l'état d'un plateau
+	*	Afficher l'état d'un plateau
+	*	@return Chaîne de caractères représentant l'état d'un plateau
 	*/
 	public String toString() {
-		
+		return "Appel de la méthode toString() de la classe Board";
 	}
 
 }

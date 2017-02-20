@@ -96,9 +96,10 @@ public class Candy {
 	
 	/**
 	*	Afficher l'état d'un bonbon
+	*	@return Chaîne de caractères représentant l'état d'un bonbon
 	*/
 	public String toString() {
-		System.out.println("/----------\n| Affichage du bonbon :\n|\n| Id couleur = " + color + "\n| N° ligne  = " + row + "\n| N° colonne = " + col + "\n|\n----------/");
+		return "/----------\n| Affichage du bonbon :\n|\n| Id couleur = " + color + "\n| N° ligne   = " + row + "\n| N° colonne = " + col + "\n|\n----------/";
 	}
 
 }
