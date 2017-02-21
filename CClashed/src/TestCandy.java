@@ -14,8 +14,8 @@ public class TestCandy {
 		/* Test des getters */
 		System.out.println("/--- Test des getters");
 		System.out.println("| Color : " + bonbon1.getColor());
-		System.out.println("| Row : " + bonbon1.getColor());
-		System.out.println("| Col : " + bonbon1.getColor() + "\n");
+		System.out.println("| Row : " + bonbon1.getRow());
+		System.out.println("| Col : " + bonbon1.getCol() + "\n");
 		
 		/* Test du constructeur par copie */
 		Candy bonbon1Copie = new Candy(bonbon1);
