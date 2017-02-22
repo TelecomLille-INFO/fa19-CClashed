@@ -10,6 +10,30 @@ public class Candy {
 	/** Représente le numéro de colonne d'un bonbon sur le plateau de jeu */
 	protected int col;
 	
+	/** Constante 'EMPTY' (entier : 0) pouvant être affectée à l'attribut color */
+   	public static final int EMPTY=0;
+   	/** Constante 'ORANGE' (entier : 1) pouvant être affectée à l'attribut color */
+    	public static final int ORANGE=1;
+    	/** Constante 'GREEN' (entier : 2) pouvant être affectée à l'attribut color */
+    	public static final int GREEN=2;
+    	/** Constante 'YELLOW' (entier : 3) pouvant être affectée à l'attribut color */
+    	public static final int YELLOW=3;
+    	/** Constante 'RED' (entier : 4) pouvant être affectée à l'attribut color */
+    	public static final int RED=4;
+    	/** Constante 'CAMEL' (entier : 5) pouvant être affectée à l'attribut color */
+    	public static final int CAMEL=5;
+    	
+    	/**
+	*	Constructeur de bonbon prenant en paramètres la ligne et la colonne et affectant aléatoirement une couleur
+	*	@param row Ligne
+	*	@param col Colonne
+	*/
+	public Candy(int row, int col) {
+		this.color = (int)(Math.random()*(6));
+		this.row = row;
+		this.col = col;
+	}
+	
 	/**
 	*	Constructeur de bonbon prenant en paramètres la couleur, la ligne et la colonne
 	*	@param color Couleur
@@ -99,7 +123,7 @@ public class Candy {
 	*	@return Chaîne de caractères représentant l'état d'un bonbon
 	*/
 	public String toString() {
-		return "/----------\n| Affichage du bonbon :\n|\n| Id couleur = " + color + "\n| N° ligne   = " + row + "\n| N° colonne = " + col + "\n|\n----------/";
+		return "/----------\n| Affichage du bonbon :\n|\n| Id couleur = " + this.color + "\n| N° ligne   = " + this.row + "\n| N° colonne = " + this.col + "\n|\n----------/";
 	}
 
 }
