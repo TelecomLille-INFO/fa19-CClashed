@@ -1,3 +1,4 @@
+package main.java;
 /**
 	La classe RegularCandy représente un bonbon classique, elle hérite de la classe Candy
 */
