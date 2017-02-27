@@ -11,7 +11,7 @@ public class Board {
 	/** Represente la largeur du plateau de jeu */
 	private int width;
 	/** Represente le tableau de bonbons */
-	private Candy grid[][];
+	protected Candy grid[][];
 	/** Represente une liste de mouvements possibles sur le plateau de jeu */
 	@SuppressWarnings("unused")
 	private List<Move> possibleMoves;
