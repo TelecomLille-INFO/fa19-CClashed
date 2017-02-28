@@ -11,7 +11,7 @@ public class RegularCandy extends Candy {
 	*	@param col Colonne
 	*/
 	public RegularCandy(int color, int row, int col) {
-		/* On utilise le constructeur de la classe mère */
+		/* On utilise le constructeur de la classe mere */
 		super(color, row, col);		
 	}
 	
