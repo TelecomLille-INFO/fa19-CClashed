@@ -7,7 +7,7 @@ public class Alignment {
 	
 	protected Candy start;
 	protected Candy end;
-	protected Sens orientation=Sens.NONE;
+	public Sens orientation=Sens.NONE;
 	
 	public Alignment(){}
 	
@@ -64,7 +64,7 @@ public class Alignment {
                     a.orientation=Sens.HORIZONTAL;
                     a.start=board.grid[i][j];
                     a.end=board.grid[i+k][j];
-                    if(isWithinAnother(a,alignmentList)==false){
+                    if(a.isWithinAnother(alignmentList)==false){
                     	alignmentList.add(a);
                     }
                 }
@@ -82,7 +82,7 @@ public class Alignment {
                 	a.orientation=Sens.VERTICAL;
                     a.start=board.grid[i][j];
                     a.end=board.grid[i][j+k];
-                    if(isWithinAnother(a,alignmentList)==false){ //si l'alignement ne fait pas partie d'un alignement plus grand on l'ajoute à la liste
+                    if(a.isWithinAnother(alignmentList)==false){ //si l'alignement ne fait pas partie d'un alignement plus grand on l'ajoute à la liste
                     	alignmentList.add(a);
                     }
                    
@@ -97,22 +97,24 @@ public class Alignment {
 	
 	/*Fonction qui detecte si un alignement fait partie d'un alignement plus grand
 	 * 
-	 * @param Un objet Alignment et une ArrayList d'Alignment
+	 * @param une ArrayList d'Alignment
 	 * @return true or false
 	 * */
-	public static boolean isWithinAnother(Alignment a , List<Alignment> alignmentList){
+	public boolean isWithinAnother(List<Alignment> alignmentList){
 		
 		boolean res = false;
 		for (Alignment al:alignmentList){
-			if(a.orientation==al.orientation){
-				if(a.start.col>=al.start.col && a.end.col<=al.start.col && a.start.row==al.start.row && a.end.row==al.end.row){
+			if(this.orientation==Sens.HORIZONTAL){
+				if(al.orientation==Sens.HORIZONTAL && this.start.getCol()>=al.start.getCol() && this.end.getCol()<=al.end.getCol() && this.start.getRow()==al.start.getRow() && this.end.getRow()==al.end.getRow()){
 					res = true;
 				}
-				if(a.start.row>=al.start.row && a.end.row<=al.start.row && a.start.col==al.start.col && a.end.col==al.end.col){
+							
+			}
+			if(this.orientation==Sens.VERTICAL){
+				if(al.orientation==Sens.VERTICAL && this.start.getRow()>=al.start.getRow() && this.end.getRow()<=al.end.getRow() && this.start.getCol()==al.start.getCol() && this.end.getCol()==al.end.getCol()){
 					res = true;
 				}
-					
-			};
+			}
 		}
 		return res;
 	}
