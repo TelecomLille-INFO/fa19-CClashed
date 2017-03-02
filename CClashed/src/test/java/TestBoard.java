@@ -81,6 +81,13 @@ public class TestBoard {
 	public void testExecuteMove() {
 		fail("Not yet implemented");
 	}
+	
+	@Test
+	public void testCheckGameHasEnded()
+	{
+		Board board = new Board();
+		assertTrue(board.checkGameHasEnded());
+	}
 
 	@Test
 	public void testToString() {

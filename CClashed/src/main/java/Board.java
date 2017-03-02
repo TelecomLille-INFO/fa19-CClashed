@@ -1,4 +1,5 @@
 package main.java;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,6 @@ public class Board {
 	/** Represente le tableau de bonbons */
 	protected Candy grid[][];
 	/** Represente une liste de mouvements possibles sur le plateau de jeu */
-	@SuppressWarnings("unused")
 	private List<Move> possibleMoves;
 
 	/**
@@ -23,6 +23,7 @@ public class Board {
 		this.height = 8;
 		this.width = 8;
 		grid = new Candy[height][width];
+		possibleMoves = new ArrayList<Move>();
 		/* A voir comment on initialise le tableau et la liste */
 	}
 
@@ -113,6 +114,15 @@ public class Board {
 	 */
 	public void executeMove(Move m) {
 		System.out.println("Appel de la methode executeMove(Move m) de la classe Board");
+	}
+	
+	/**
+	 * Verifier condition d'arret de partie
+	 * @return Booleen indiquant si la partie est terminee
+	 */
+	public Boolean checkGameHasEnded()
+	{
+		return possibleMoves.isEmpty();
 	}
 
 	/**
