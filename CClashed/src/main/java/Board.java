@@ -107,6 +107,14 @@ public class Board {
 		System.out.println("Appel de la methode checkMove(Move m) de la classe Board");
 		return true;
 	}
+	
+	/**
+	 * Chercher moves possibles sur le plateau de jeu
+	 */
+	public void findPossibleMoves(){
+		possibleMoves.clear();
+		//TODO
+	}
 
 	/**
 	 *	Effectuer un mouvement sur le plateau de jeu
