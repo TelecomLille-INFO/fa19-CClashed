@@ -42,7 +42,7 @@ public class Alignment {
 	 *  @param Un objet board
 	 *  @return Une ArrayList d'objets Alignment
 	 * */
-	static List<Alignment> newAlignmentDetection (Board board){ 
+	/*static List<Alignment> newAlignmentDetection (Board board){ 
     
 		List<Alignment> alignmentList = new ArrayList<Alignment>();
         int k;
@@ -93,7 +93,7 @@ public class Alignment {
         
         }
 		return alignmentList;
-    }
+    }*/
 	
 	/*Fonction qui detecte si un alignement fait partie d'un alignement plus grand
 	 * 
@@ -119,4 +119,6 @@ public class Alignment {
 		return res;
 	}
 
+		
+	
 }

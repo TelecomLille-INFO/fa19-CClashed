@@ -24,7 +24,11 @@ public class Candy {
     	/** Constante 'CAMEL' (entier : 5) pouvant etre affectee a l'attribut color */
     	public static final int CAMEL=5;
     	
-    	/**
+    protected boolean aSupprimer=false;
+    	
+    	
+
+		/**
 	*	Constructeur de bonbon prenant en parametres la ligne et la colonne et affectant aleatoirement une couleur
 	*	@param row Ligne
 	*	@param col Colonne
@@ -103,6 +107,22 @@ public class Candy {
 	*/
 	public void setCol(int col) {
 		this.col = col;
+	}
+	
+	/**
+	*	Accesseur
+	*	@return Boolean definissant si le bonbon est a supprimer ou non
+	*/
+	public boolean isaSupprimer() {
+		return aSupprimer;
+	}
+
+	/**
+	*	Mutateur
+	*	@param Boolean aSupprimer true or false
+	*/
+	public void setaSupprimer(boolean aSupprimer) {
+		this.aSupprimer = aSupprimer;
 	}
 	
 	/**

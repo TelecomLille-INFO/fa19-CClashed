@@ -26,6 +26,14 @@ public class Board {
 		possibleMoves = new ArrayList<Move>();
 		/* A voir comment on initialise le tableau et la liste */
 	}
+	
+	public Board(int height, int width) {
+		this.height = height;
+		this.width = width;
+		grid = new Candy[height][width];
+		possibleMoves = new ArrayList<Move>();
+		/* A voir comment on initialise le tableau et la liste */
+	}
 
 	/**
 	 *	Accesseur
@@ -153,5 +161,62 @@ public class Board {
 		res += "Fin du plateau\n";
 		return res;
 	}
+	
+	public void newAlignmentDetection (){ 
+
+	        int k;
+	        
+	        for (int j=0 ; j<this.getWidth(); j++)
+	        {
+	            for(int i=0 ; i<this.getHeight(); i++)
+	            {
+	                k=1;
+	 
+	                while(i+k<this.getHeight() && this.grid[i][j].color == this.grid[i+k][j].color) // Tant que la case qui suit i est du meme type on continue (alignement horizontal)
+	                {
+	                    k = k+1; //
+	                }
+	 
+	                if(k>=2) // Si k est superieur ou egal a  2 alors il y a un alignement
+	                {
+	                   
+	                	int cpt=i;
+	                	while(i+k>=i){
+	                		if(this.grid[i+k][j].isaSupprimer()==false){
+	                			this.grid[i+k][j].setaSupprimer(true);
+	                			
+	                		}
+	                		k--;
+	                	}
+	                	
+	                	
+	                }
+	 
+	                k=1;
+	                
+	                while(j+k<this.getWidth() && this.grid[i][j].color == this.grid[i][j+k].color)  // Tant que la case qui suit i est du meme type on continue (alignement vertical)
+	                {
+	                    k = k+1;
+	                }
+	 
+	                if(k>=2)// Si k est superieur ou egal a  2 alors il y a un alignement
+	                {
+	                	
+	                	
+	                	while(j+k>=j){
+	                		if(this.grid[i][j+k].isaSupprimer()==false){
+	                			this.grid[i][j+k].setaSupprimer(true);
+	                			
+	                		}
+	                		k--;
+	                	}
+	                }
+	 
+	                
+	            }
+	        
+	        }
+
+    }
 
 }

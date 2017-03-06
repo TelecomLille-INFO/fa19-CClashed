@@ -93,5 +93,32 @@ public class TestBoard {
 	public void testToString() {
 		fail("Not yet implemented");
 	}
+	
+	@Test 
+	public void testNewAlignmentDetection(){
+		Board board = new Board();
+		Candy candy0 = new Candy(1,0,0);
+		Candy candy1= new Candy(1,0,1);
+		Candy candy2= new Candy(1,0,2);
+		Candy candy3= new Candy(1,0,3);
+		board.addCandy(0, 4);
+		board.addCandy(0, 5);
+		board.addCandy(0, 6);
+		board.addCandy(0, 7);
+		for (int i=1;i<board.getHeight();i++){
+			for(int j=0;j<board.getWidth();j++){
+				board.addCandy(i, j);
+			}
+		}
+		board.addCandy(candy0);
+		board.addCandy(candy1);
+		board.addCandy(candy2);
+		board.addCandy(candy3);
+		board.newAlignmentDetection();
+		assertTrue(candy0.isaSupprimer());
+		assertTrue(candy1.isaSupprimer());
+		assertTrue(candy2.isaSupprimer());
+		assertTrue(candy3.isaSupprimer());
+	}
 
 }
