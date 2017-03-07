@@ -216,20 +216,28 @@ public class Board {
 		{
 			int x = al.getStart().getCol();
 			int yStart = al.getStart().getRow();
-			int yEnd = al.getEnd().getRow();
-			for(int i = 0; i <= yEnd-yStart; ++i)
+			int length = al.getLength();
+			// Check if alignment contains 3 Candys or more
+			if(length >= 2)
 			{
-				grid[yStart+i][x].setaSupprimer(true);
+				for(int i = 0; i <= length; ++i)
+				{
+					grid[yStart+i][x].setaSupprimer(true);
+				}
 			}
 		}
 		else if(al.orientation.equals(Sens.HORIZONTAL))
 		{
 			int y = al.getStart().getRow();
 			int xStart = al.getStart().getCol();
-			int xEnd = al.getEnd().getCol();
-			for(int i = 0; i <= xEnd-xStart; ++i)
+			int length = al.getLength();
+			// Check if alignment contains 3 Candys or more
+			if(length >= 2)
 			{
-				grid[y][xStart+i].setaSupprimer(true);
+				for(int i = 0; i <= length; ++i)
+				{
+					grid[y][xStart+i].setaSupprimer(true);
+				}
 			}
 		}
 	}
