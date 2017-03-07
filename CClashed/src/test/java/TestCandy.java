@@ -2,9 +2,14 @@ package test.java;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
+import main.java.Alignment;
 import main.java.Candy;
+import main.java.Sens;
 
 public class TestCandy {
 
@@ -81,6 +86,25 @@ public class TestCandy {
 		Candy bonbon3 = new Candy(3,2,1);
 		assertTrue(bonbon1.equals(bonbon2));
 		assertFalse(bonbon1.equals(bonbon3));
+	}
+	
+	@Test
+	public void testIsWithinAlignment(){
+		Candy candyStart = new Candy(1,0,0);
+		Candy candyEnd = new Candy(1,0,2);
+		Candy candyToTest = new Candy(1,0,1);
+		Alignment align = new Alignment(candyStart, candyEnd);
+		align.orientation = Sens.HORIZONTAL;
+		List<Alignment> alignments = new ArrayList<Alignment>();
+		alignments.add(align);
+		assertTrue(candyToTest.isWithinAlignment(Sens.HORIZONTAL, alignments));
+		
+		candyEnd = new Candy(1,2,0);
+		candyToTest = new Candy(1,1,0);
+		Alignment align2 = new Alignment(candyStart, candyEnd);
+		align2.orientation = Sens.VERTICAL;
+		alignments.add(align2);
+		assertTrue(candyToTest.isWithinAlignment(Sens.VERTICAL, alignments));
 	}
 
 	@Test

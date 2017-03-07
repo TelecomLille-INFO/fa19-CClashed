@@ -94,6 +94,33 @@ public class TestBoard {
 		fail("Not yet implemented");
 	}
 	
+	@Test
+	public void testNewAlignmentDetection2()
+	{
+		Board plateau = new Board();
+		for(int i = 0; i<plateau.getHeight();++i)
+		{
+			for(int j = 0; j<plateau.getWidth();++j)
+			{
+				Candy c = new Candy(1,i,j);
+				plateau.addCandy(c);
+			}
+		}
+		
+		plateau.newAlignmentDetection2();
+		for(int i = 0; i<plateau.getHeight();++i)
+		{
+			for(int j = 0; j<plateau.getWidth();++j)
+			{
+				assertTrue(plateau.getCandy(i, j).isaSupprimer());
+			}
+		}
+		Candy c = new Candy(2,0,7);
+		plateau.addCandy(c);
+		plateau.newAlignmentDetection2();
+		assertFalse(plateau.getCandy(0, 7).isaSupprimer());
+	}
+	
 	@Test 
 	public void testNewAlignmentDetection(){
 		Board board = new Board();

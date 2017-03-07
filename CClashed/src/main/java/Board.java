@@ -170,7 +170,7 @@ public class Board {
 		for(int i = 0; i<this.getHeight(); ++i)
 		{
 			//Parcours horizontal
-			for(int j = 0; i<this.getWidth();++j)
+			for(int j = 0; j<this.getWidth();++j)
 			{
 				Candy currentCandy = grid[i][j];
 				// On checke si le Candy est deja dans un alignement vertical...
@@ -244,7 +244,7 @@ public class Board {
 		// Alignement resultat
 		Alignment verticalAlignment = new Alignment(c,c);
 		Candy currentCandy = new Candy(c);
-		for(int k = 0; c.getRow()+k < this.getHeight();)
+		for(int k = 0; c.getRow()+k+1 < this.getHeight();)
 		{
 			++k;
 			currentCandy = grid[c.getRow()+k][c.getCol()];
@@ -269,7 +269,7 @@ public class Board {
 		// Alignement resultat
 		Alignment horizontalAlignment = new Alignment(c,c);
 		Candy currentCandy = new Candy(c);
-		for(int k = 0; c.getCol()+k < this.getWidth();)
+		for(int k = 0; c.getCol()+k+1 < this.getWidth();)
 		{
 			++k;
 			currentCandy = grid[c.getRow()][c.getCol()+k];

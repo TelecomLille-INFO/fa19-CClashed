@@ -15,8 +15,8 @@ public class Main {
 		}	
 		System.out.println(plateau);
 		
-		System.out.println("Ajout Candy rouge en 2/2\n");
-		Candy redCandy = new Candy(4,2,2);
+		System.out.println("Ajout Candy rouge en 2/4\n");
+		Candy redCandy = new Candy(4,2,4);
 		plateau.addCandy(redCandy);
 		System.out.println(plateau);
 	}
