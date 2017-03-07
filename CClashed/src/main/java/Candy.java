@@ -1,4 +1,7 @@
 package main.java;
+
+import java.util.List;
+
 /**
 	La classe Candy represente un bonbon sous sa forme la plus abstraite
 */
@@ -123,6 +126,47 @@ public class Candy {
 	*/
 	public void setaSupprimer(boolean aSupprimer) {
 		this.aSupprimer = aSupprimer;
+	}
+	
+	/**
+	*	Detecter si le candy est dans un alignement
+	*	@param Sens sens
+	*	@param List<Alignment> liste a analyser
+	*	@return Booleen resultat
+	*/
+	public boolean isWithinAlignment(Sens sens, List<Alignment> liste) {
+		boolean res = false;
+		for(Alignment al: liste)
+		{
+			if(al.orientation.equals(sens))
+			{
+				if(sens.equals(Sens.VERTICAL))
+				{
+					int color = al.getStart().getColor();
+					int x = al.getStart().getCol();
+					int yStart = al.getStart().getRow();
+					int yEnd = al.getEnd().getRow();
+					if(this.getColor() == color && this.getCol() == x)
+					{
+						if(this.getRow() >= yStart && this.getRow() <= yEnd)
+							res = true;
+					}
+				}
+				else if(sens.equals(Sens.HORIZONTAL))
+				{
+					int color = al.getStart().getColor();
+					int y = al.getStart().getRow();
+					int xStart = al.getStart().getCol();
+					int xEnd = al.getEnd().getCol();
+					if(this.getColor() == color && this.getRow() == y)
+					{
+						if(this.getCol() >= xStart && this.getCol() <= xEnd)
+							res = true;
+					}
+				}
+			}
+		}
+		return res;
 	}
 	
 	/**
