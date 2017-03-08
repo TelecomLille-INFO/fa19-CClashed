@@ -69,7 +69,33 @@ public class TestBoard {
 
 	@Test
 	public void testCheckTurnHasEnded() {
-		fail("Not yet implemented");
+		Board plateau = new Board();
+		for(int i = 0; i<plateau.getHeight();++i)
+		{
+			for(int j = 0; j<plateau.getWidth();++j)
+			{
+				Candy c = new Candy(1,i,j);
+				plateau.addCandy(c);
+			}
+		}
+		for(int i = 0; i<plateau.getHeight();++i)
+		{
+			for(int j = 0; j<plateau.getWidth();++j)
+			{
+				assertTrue(plateau.checkTurnHasEnded());
+			}
+		}
+		Candy c = new Candy(2,3);
+		c.setaSupprimer(true);
+		plateau.addCandy(c);
+		for(int i = 0; i<plateau.getHeight();++i)
+		{
+			for(int j = 0; j<plateau.getWidth();++j)
+			{
+				assertFalse(plateau.checkTurnHasEnded());
+			}
+		}
+		
 	}
 
 	@Test
@@ -174,4 +200,5 @@ public class TestBoard {
 		assertNotEquals(c1.getColor(),2);
 				
 	}
+
 }
