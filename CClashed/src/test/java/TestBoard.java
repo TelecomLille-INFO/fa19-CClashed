@@ -148,4 +148,30 @@ public class TestBoard {
 		assertTrue(candy3.isaSupprimer());
 	}
 
+	@Test
+	public void testCompacter(){
+		Board plateau = new Board();
+		for(int i = 0; i<plateau.getHeight();++i){
+			for(int j = 0; j<plateau.getWidth();++j){
+				Candy c = new Candy(1,i,j);
+				plateau.addCandy(c);
+			}
+		}
+		
+		Candy c = new Candy(0,0,0);
+		plateau.addCandy(c);
+		plateau.compacter();
+		assertNotEquals(c.getColor(),0);
+		Candy c1 = new Candy(2,0,0);
+		Candy c2 = new Candy(1,1,0);
+		Candy c3 = new Candy(0,2,0);
+		plateau.addCandy(c1);
+		plateau.addCandy(c2);
+		plateau.addCandy(c3);
+		plateau.compacter();
+		assertEquals(c3.getColor(),1);
+		assertEquals(c2.getColor(),2);
+		assertNotEquals(c1.getColor(),2);
+				
+	}
 }

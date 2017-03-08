@@ -102,7 +102,11 @@ public class Board {
 		@return True si le tour de jeu est termine, false sinon
 	 */
 	public boolean checkTurnHasEnded() {
-		System.out.println("Appel de la methode checkTurnHasEnded() de la classe Board");
+		for(int i=0;i<this.getHeight();i++){
+			for(int j=0;j<this.getWidth();j++){
+				if(this.getCandy(i,j).isaSupprimer()==true)return false;
+			}
+		}
 		return true;
 	}
 
@@ -348,5 +352,45 @@ public class Board {
 		}
 
 	}
+	
+    public void compacter(){
+	int x,y;
+	for(y=0 ; y<this.width ; y++){
+	    for(x=0 ; x<this.height; x++){
+
+	    	if((this.getCandy(x,y).getColor()==0) && (x!=0)){
+	    		int i=x;
+	    		while(i!=0){
+				
+				this.getCandy(i,y).setColor(this.getCandy(i-1,y).getColor());
+				/* deplacement si la case reste dans l'ecran */
+				i--;
+	    		}
+	    		if(i==0){
+	    			this.getCandy(i,y).setColor((int)(Math.random()*(7)));
+	    		}
+	    		this.getCandy(x,y).setaSupprimer(false);
+			
+	    	}else if((this.getCandy(x,y).getColor()==0) && (x==0)){
+		    	this.getCandy(x,y).setColor((int)(Math.random()*(7)));
+		    	/* remplacement aleatoire si la case n'etait pas dans l'ecran */
+		    	this.getCandy(x,y).setaSupprimer(false);
+			}
+	    }
+	}
+    }
+    
+    public void eclater(){
+    	int x,y;
+    	for(y=0 ; y<this.getWidth(); y++){
+    	    for(x=0 ; x<this.getHeight() ; x++){
+    		if(this.getCandy(x,y).isaSupprimer()==true){
+    		    this.getCandy(x,y).setColor(0);
+    		    /* si le critere de suppression est verifie, contenu devient "vide" */
+    		}
+    	    }
+    	}
+    	this.compacter();
+        }
 
 }
