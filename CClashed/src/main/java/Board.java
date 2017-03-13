@@ -107,7 +107,7 @@ public class Board {
 	public boolean checkTurnHasEnded() {
 		for(int i=0; i<this.getHeight(); i++) {
 			for(int j=0; j<this.getWidth(); j++) {
-				if(this.getCandy(i,j).isASupprimer()==true) {
+				if(this.getCandy(i,j).getASupprimer()==true) {
 					return false;
 				}
 			}
@@ -205,7 +205,7 @@ public class Board {
 		// On a notre liste d'alignements, on n'a plus qu'a la parcourir pour set les Candy a supprimer
 		if(!alignements.isEmpty()) {
 			for(Alignment al:alignements) {
-				deleteCandysInAlignment(al);
+				deleteCandiesInAlignment(al);
 			}
 		}
 	}
@@ -222,7 +222,7 @@ public class Board {
 			// Check if alignment contains 3 Candys or more
 			if(length >= 2) {
 				for(int i = 0; i <= length; ++i) {
-					grid[yStart+i][x].setaSupprimer(true);
+					grid[yStart+i][x].setASupprimer(true);
 				}
 			}
 		}
@@ -233,7 +233,7 @@ public class Board {
 			// Check if alignment contains 3 Candys or more
 			if(length >= 2) {
 				for(int i = 0; i <= length; ++i) {
-					grid[y][xStart+i].setaSupprimer(true);
+					grid[y][xStart+i].setASupprimer(true);
 				}
 			}
 		}
@@ -305,8 +305,8 @@ public class Board {
 				if(k>=2) {
 					int cpt=i;
 					while(i+k>=i) {
-						if(this.grid[i+k][j].isaSupprimer()==false) {
-							this.grid[i+k][j].setaSupprimer(true);
+						if(this.grid[i+k][j].getASupprimer()==false) {
+							this.grid[i+k][j].setASupprimer(true);
 						}
 						k--;
 					}
@@ -322,8 +322,8 @@ public class Board {
 				// Si k est superieur ou egal a  2 alors il y a un alignement
 				if(k>=2) {
 					while(j+k>=j) {
-						if(this.grid[i][j+k].isaSupprimer()==false) {
-							this.grid[i][j+k].setaSupprimer(true);
+						if(this.grid[i][j+k].getASupprimer()==false) {
+							this.grid[i][j+k].setASupprimer(true);
 						}
 						k--;
 					}
@@ -355,14 +355,14 @@ public class Board {
 		    				this.getCandy(i,y).setColor((int)(Math.random()*(7)));
 	    				}
 	    			
-	    				this.getCandy(x,y).setaSupprimer(false);
+	    				this.getCandy(x,y).setASupprimer(false);
 			
 	    			}
 	    			
 	    			else if((this.getCandy(x,y).getColor()==0) && (x==0)) {
 	    				/* remplacement aleatoire si la case n'etait pas dans l'ecran */
 				    	this.getCandy(x,y).setColor((int)(Math.random()*(7)));
-				    	this.getCandy(x,y).setaSupprimer(false);
+				    	this.getCandy(x,y).setASupprimer(false);
 				}
 	    		}
 	    	}
@@ -375,7 +375,7 @@ public class Board {
 		int x,y;
     		for(y=0; y<this.getWidth(); y++) {
     	    		for(x=0; x<this.getHeight(); x++) {
-    				if(this.getCandy(x,y).isaSupprimer()==true) {
+    				if(this.getCandy(x,y).getASupprimer()==true) {
     					/* si le critere de suppression est verifie, contenu devient "vide" */
     		    			this.getCandy(x,y).setColor(0);
     		    		}

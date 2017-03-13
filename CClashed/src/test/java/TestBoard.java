@@ -86,7 +86,7 @@ public class TestBoard {
 			}
 		}
 		Candy c = new Candy(2,3);
-		c.setaSupprimer(true);
+		c.setASupprimer(true);
 		plateau.addCandy(c);
 		for(int i = 0; i<plateau.getHeight();++i)
 		{
@@ -138,13 +138,13 @@ public class TestBoard {
 		{
 			for(int j = 0; j<plateau.getWidth();++j)
 			{
-				assertTrue(plateau.getCandy(i, j).isaSupprimer());
+				assertTrue(plateau.getCandy(i, j).getASupprimer());
 			}
 		}
 		Candy c = new Candy(2,0,7);
 		plateau.addCandy(c);
 		plateau.newAlignmentDetection2();
-		assertFalse(plateau.getCandy(0, 7).isaSupprimer());
+		assertFalse(plateau.getCandy(0, 7).getASupprimer());
 	}
 	
 	@Test 
@@ -168,10 +168,10 @@ public class TestBoard {
 		board.addCandy(candy2);
 		board.addCandy(candy3);
 		board.newAlignmentDetection();
-		assertTrue(candy0.isaSupprimer());
-		assertTrue(candy1.isaSupprimer());
-		assertTrue(candy2.isaSupprimer());
-		assertTrue(candy3.isaSupprimer());
+		assertTrue(candy0.getASupprimer());
+		assertTrue(candy1.getASupprimer());
+		assertTrue(candy2.getASupprimer());
+		assertTrue(candy3.getASupprimer());
 	}
 
 	@Test
