@@ -1,6 +1,7 @@
 package main.java;
+
 /**
-	La classe RegularCandy représente un bonbon classique, elle hérite de la classe Candy
+*	La classe RegularCandy représente un bonbon classique, elle hérite de la classe Candy
 */
 public class RegularCandy extends Candy {
 
@@ -11,7 +12,7 @@ public class RegularCandy extends Candy {
 	*	@param col Colonne
 	*/
 	public RegularCandy(int color, int row, int col) {
-		/* On utilise le constructeur de la classe mere */
+		/* On utilise le constructeur de la classe mère */
 		super(color, row, col);		
 	}
 	

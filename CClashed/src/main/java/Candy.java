@@ -3,36 +3,36 @@ package main.java;
 import java.util.List;
 
 /**
-	La classe Candy represente un bonbon sous sa forme la plus abstraite
+*	La classe Candy représente un bonbon sous sa forme la plus abstraite
 */
 public class Candy {
 
-	/** Represente la couleur d'un bonbon */
+	/** Représente la couleur d'un bonbon */
 	protected int color;
-	/** Represente le numero de ligne d'un bonbon sur le plateau de jeu */
+	/** Représente le numéro de ligne d'un bonbon sur le plateau de jeu */
 	protected int row;
-	/** Represente le numero de colonne d'un bonbon sur le plateau de jeu */
+	/** Représente le numéro de colonne d'un bonbon sur le plateau de jeu */
 	protected int col;
 	
-	/** Constante 'EMPTY' (entier : 0) pouvant etre affectee a l'attribut color */
+	/** Constante 'EMPTY' (entier : 0) pouvant être affectée à l'attribut color */
    	public static final int EMPTY=0;
-   	/** Constante 'ORANGE' (entier : 1) pouvant etre affectee a l'attribut color */
+   	/** Constante 'ORANGE' (entier : 1) pouvant être affectée à l'attribut color */
     	public static final int ORANGE=1;
-    	/** Constante 'GREEN' (entier : 2) pouvant etre affectee a l'attribut color */
+    	/** Constante 'GREEN' (entier : 2) pouvant être affectée à l'attribut color */
     	public static final int GREEN=2;
-    	/** Constante 'YELLOW' (entier : 3) pouvant etre affectee a l'attribut color */
+    	/** Constante 'YELLOW' (entier : 3) pouvant être affectée à l'attribut color */
     	public static final int YELLOW=3;
-    	/** Constante 'RED' (entier : 4) pouvant etre affectee a l'attribut color */
+    	/** Constante 'RED' (entier : 4) pouvant être affectée à l'attribut color */
     	public static final int RED=4;
-    	/** Constante 'CAMEL' (entier : 5) pouvant etre affectee a l'attribut color */
+    	/** Constante 'CAMEL' (entier : 5) pouvant être affectée à l'attribut color */
     	public static final int CAMEL=5;
     	
-    protected boolean aSupprimer=false;
-    	
+    	/** Booléen indiquant si le bonbon en question est à supprimer du plateau ou non */
+    	protected boolean aSupprimer=false;
     	
 
-		/**
-	*	Constructeur de bonbon prenant en parametres la ligne et la colonne et affectant aleatoirement une couleur
+	/**
+	*	Constructeur de bonbon prenant en paramètres la ligne et la colonne et affectant aléatoirement une couleur
 	*	@param row Ligne
 	*	@param col Colonne
 	*/
@@ -43,7 +43,7 @@ public class Candy {
 	}
 	
 	/**
-	*	Constructeur de bonbon prenant en parametres la couleur, la ligne et la colonne
+	*	Constructeur de bonbon prenant en paramètres la couleur, la ligne et la colonne
 	*	@param color Couleur
 	*	@param row Ligne
 	*	@param col Colonne
@@ -66,7 +66,7 @@ public class Candy {
 	
 	/**
 	*	Accesseur
-	*	@return Entier representant la couleur du bonbon
+	*	@return Entier représentant la couleur du bonbon
 	*/
 	public int getColor() {
 		return this.color;
@@ -74,7 +74,7 @@ public class Candy {
 	
 	/**
 	*	Mutateur
-	*	@param color Entier representant la couleur du bonbon
+	*	@param color Entier représentant la couleur du bonbon
 	*/
 	public void setColor(int color) {
 		this.color = color;
@@ -82,7 +82,7 @@ public class Candy {
 	
 	/**
 	*	Accesseur
-	*	@return Entier representant la ligne du bonbon
+	*	@return Entier représentant la ligne du bonbon
 	*/
 	public int getRow() {
 		return this.row;
@@ -90,7 +90,7 @@ public class Candy {
 	
 	/**
 	*	Mutateur
-	*	@param row Numero de ligne du bonbon
+	*	@param row Numéro de ligne du bonbon
 	*/
 	public void setRow(int row) {
 		this.row = row;
@@ -98,7 +98,7 @@ public class Candy {
 	
 	/**
 	*	Accesseur
-	*	@return Entier representant la colonne du bonbon
+	*	@return Entier représentant la colonne du bonbon
 	*/
 	public int getCol() {
 		return this.col;
@@ -106,7 +106,7 @@ public class Candy {
 	
 	/**
 	*	Mutateur
-	*	@param col Numero de colonne du bonbon
+	*	@param col Numéro de colonne du bonbon
 	*/
 	public void setCol(int col) {
 		this.col = col;
@@ -114,25 +114,25 @@ public class Candy {
 	
 	/**
 	*	Accesseur
-	*	@return Boolean definissant si le bonbon est a supprimer ou non
+	*	@return Booléen indiquant si le bonbon en question est à supprimer du plateau ou non
 	*/
-	public boolean isaSupprimer() {
-		return aSupprimer;
+	public boolean getASupprimer() {
+		return this.aSupprimer;
 	}
 
 	/**
 	*	Mutateur
-	*	@param Boolean aSupprimer true or false
+	*	@param aSupprimer Booléen à true si le bonbon est à supprimer du plateau, false sinon
 	*/
-	public void setaSupprimer(boolean aSupprimer) {
+	public void setASupprimer(boolean aSupprimer) {
 		this.aSupprimer = aSupprimer;
 	}
 	
 	/**
-	*	Detecter si le candy est dans un alignement
-	*	@param Sens sens
-	*	@param List<Alignment> liste a analyser
-	*	@return Booleen resultat
+	*	Détecter si le bonbon est dans un alignement
+	*	@param sens Sens de l'alignement
+	*	@param liste Liste à analyser
+	*	@return True si le bonbon est dans l'alignement, false sinon
 	*/
 	public boolean isWithinAlignment(Sens sens, List<Alignment> liste) {
 		boolean res = false;
@@ -170,9 +170,9 @@ public class Candy {
 	}
 	
 	/**
-	*	Tester l'egalite entre deux bonbons
-	*	@param c Bonbon dont on veut tester l'egalite avec l'instance courante
-	*	@return True si les deux bonbons sont egaux, false sinon
+	*	Tester l'égalité de deux bonbons
+	*	@param c Bonbon dont on veut tester l'égalite avec l'instance courante
+	*	@return True si les deux bonbons sont égaux, false sinon
 	*/
 	public boolean equals(Candy c) {
 		if ((this.color == c.color) && (this.row == c.row) && (this.col == c.col)) {
@@ -184,11 +184,11 @@ public class Candy {
 	}
 	
 	/**
-	*	Afficher l'etat d'un bonbon
-	*	@return Chaine de caracteres representant l'etat d'un bonbon
+	*	Afficher l'état d'un bonbon
+	*	@return Chaîne de caractères représentant l'état d'un bonbon
 	*/
 	public String toString() {
-		return "/----------\n| Affichage du bonbon :\n|\n| Id couleur = " + this.color + "\n| N� ligne = " + this.row + "\n| N� colonne = " + this.col + "\n|\n----------/";
+		return "/----------\n| Affichage du bonbon :\n|\n| Id couleur = " + this.color + "\n| N. ligne = " + this.row + "\n| N. colonne = " + this.col + "\n|\n----------/";
 	}
 
 }

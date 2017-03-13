@@ -1,10 +1,9 @@
 package main.java;
 
-/*
- * Enumeration qui permet de determiner le sens de l'alignement
- */
+/**
+*	Énumération permettant de déterminer le sens d'un alignement
+*/
 public enum Sens {
-
 	NONE,
 	HORIZONTAL,
 	VERTICAL;

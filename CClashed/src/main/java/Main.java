@@ -3,7 +3,7 @@ package main.java;
 public class Main {
 
 	public static void main(String[] args) {
-		//Si vous voulez faire des tests à l'arrache, faites les ici !
+		//Si vous voulez faire des tests Ã  l'arrache, faites les ici !
 
 		Board plateau = new Board();
 		for(int i = 0; i<plateau.getHeight();++i)

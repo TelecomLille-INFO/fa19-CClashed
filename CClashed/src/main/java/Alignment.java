@@ -1,7 +1,9 @@
 package main.java;
 import java.util.List;
 
-
+/**
+*	La classe Alignment n'est pas comment√©e
+*/
 public class Alignment {
 	
 	protected Candy start;
@@ -55,7 +57,7 @@ public class Alignment {
 		calculateLength();
 	}
 
-	/* Fonction qui crÈe une liste des alignements ‡ un instant T
+	/* Fonction qui cr√©e une liste des alignements √† un instant T
 	 * 
 	 * Cette liste sera comparee a la liste precedente qfin de detecter si de nouveaux alignements ont ete generes
 	 * Les nouveaux alignements correspondront a ceu generes par le deplacement d'un bonbon
@@ -104,7 +106,7 @@ public class Alignment {
                 	a.orientation=Sens.VERTICAL;
                     a.start=board.grid[i][j];
                     a.end=board.grid[i][j+k];
-                    if(a.isWithinAnother(alignmentList)==false){ //si l'alignement ne fait pas partie d'un alignement plus grand on l'ajoute ‡ la liste
+                    if(a.isWithinAnother(alignmentList)==false){ //si l'alignement ne fait pas partie d'un alignement plus grand on l'ajoute √† la liste
                     	alignmentList.add(a);
                     }
                    
