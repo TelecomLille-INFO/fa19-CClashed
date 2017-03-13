@@ -6,15 +6,6 @@ public class Main {
 		//Si vous voulez faire des tests à l'arrache, faites les ici !
 
 		Board plateau = new Board();
-		for(int i = 0; i<plateau.getHeight();++i)
-		{
-			for(int j = 0; j<plateau.getWidth();++j)
-			{
-				Candy c = new Candy(i,j);
-				plateau.addCandy(c);
-			}
-		}	
-		
 		
 		for(int j = 2; j<5;++j){
 			Candy c = new Candy(3,3,j);
@@ -24,7 +15,7 @@ public class Main {
 		System.out.println(plateau);
 		
 		do{
-			plateau.newAlignmentDetection2();
+			plateau.detectAlignments();
 			plateau.eclater();
 			System.out.println(plateau);
 		}while(plateau.checkTurnHasEnded()!=true);

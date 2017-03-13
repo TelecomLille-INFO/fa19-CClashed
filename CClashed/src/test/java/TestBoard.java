@@ -121,7 +121,7 @@ public class TestBoard {
 	}
 	
 	@Test
-	public void testNewAlignmentDetection2()
+	public void testDetectAlignments()
 	{
 		Board plateau = new Board();
 		for(int i = 0; i<plateau.getHeight();++i)
@@ -133,7 +133,7 @@ public class TestBoard {
 			}
 		}
 		
-		plateau.newAlignmentDetection2();
+		plateau.detectAlignments();
 		for(int i = 0; i<plateau.getHeight();++i)
 		{
 			for(int j = 0; j<plateau.getWidth();++j)
@@ -143,35 +143,8 @@ public class TestBoard {
 		}
 		Candy c = new Candy(2,0,7);
 		plateau.addCandy(c);
-		plateau.newAlignmentDetection2();
+		plateau.detectAlignments();
 		assertFalse(plateau.getCandy(0, 7).getASupprimer());
-	}
-	
-	@Test 
-	public void testNewAlignmentDetection(){
-		Board board = new Board();
-		Candy candy0 = new Candy(1,0,0);
-		Candy candy1= new Candy(1,0,1);
-		Candy candy2= new Candy(1,0,2);
-		Candy candy3= new Candy(1,0,3);
-		board.addCandy(0, 4);
-		board.addCandy(0, 5);
-		board.addCandy(0, 6);
-		board.addCandy(0, 7);
-		for (int i=1;i<board.getHeight();i++){
-			for(int j=0;j<board.getWidth();j++){
-				board.addCandy(i, j);
-			}
-		}
-		board.addCandy(candy0);
-		board.addCandy(candy1);
-		board.addCandy(candy2);
-		board.addCandy(candy3);
-		board.newAlignmentDetection();
-		assertTrue(candy0.getASupprimer());
-		assertTrue(candy1.getASupprimer());
-		assertTrue(candy2.getASupprimer());
-		assertTrue(candy3.getASupprimer());
 	}
 
 	@Test

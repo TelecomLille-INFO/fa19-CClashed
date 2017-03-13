@@ -25,6 +25,7 @@ public class Board {
 		grid = new Candy[height][width];
 		possibleMoves = new ArrayList<Move>();
 		/* A voir comment on initialise le tableau et la liste */
+		resetBoard();
 	}
 	
 	/**
@@ -38,6 +39,22 @@ public class Board {
 		grid = new Candy[height][width];
 		possibleMoves = new ArrayList<Move>();
 		/* A voir comment on initialise le tableau et la liste */
+		resetBoard();
+	}
+	
+	/**
+	 * Méthode permettant de réinitialiser le plateau
+	 */
+	private void resetBoard()
+	{
+		for(int i = 0; i<this.getHeight();++i)
+		{
+			for(int j = 0; j<this.getWidth();++j)
+			{
+				Candy c = new Candy(i,j);
+				this.addCandy(c);
+			}
+		}	
 	}
 
 	/**
@@ -172,9 +189,9 @@ public class Board {
 	}
 	
 	/**
-	*	Méthode non commentée
+	*	Méthode permettant de détecter les alignements et marquer les Candy à supprimer
 	*/
-	public void newAlignmentDetection2() {
+	public void detectAlignments() {
 		//Liste des alignements à remplir
 		List<Alignment> alignements = new ArrayList<Alignment>();
 		
@@ -284,104 +301,54 @@ public class Board {
 		}
 		return horizontalAlignment;
 	}
-
-	/*
-	*	Méthode non commentée
-	*/
-	public void newAlignmentDetection() { 
-
-		int k;
-
-		for (int j=0 ; j<this.getWidth(); j++) {
-			for(int i=0 ; i<this.getHeight(); i++) {
-				k=1;
-
-				// Tant que la case qui suit i est du meme type on continue (alignement horizontal)
-				while(i+k<this.getHeight() && this.grid[i][j].color == this.grid[i+k][j].color) {
-					k = k+1;
-				}
-
-				// Si k est superieur ou egal a  2 alors il y a un alignement
-				if(k>=2) {
-					int cpt=i;
-					while(i+k>=i) {
-						if(this.grid[i+k][j].getASupprimer()==false) {
-							this.grid[i+k][j].setASupprimer(true);
-						}
-						k--;
-					}
-				}
-
-				k=1;
-
-				// Tant que la case qui suit i est du meme type on continue (alignement vertical)
-				while(j+k<this.getWidth() && this.grid[i][j].color == this.grid[i][j+k].color) {
-					k = k+1;
-				}
-
-				// Si k est superieur ou egal a  2 alors il y a un alignement
-				if(k>=2) {
-					while(j+k>=j) {
-						if(this.grid[i][j+k].getASupprimer()==false) {
-							this.grid[i][j+k].setASupprimer(true);
-						}
-						k--;
-					}
-				}
-
-			}
-
-		}
-
-	}
 	
 	/**
-	*	Méthode non commentée
-	*/
+	 *	Méthode non commentée
+	 */
 	public void compacter(){
 		int x,y;
 		for(y=0; y<this.width; y++) {
-	    		for(x=0; x<this.height; x++) {
+			for(x=0; x<this.height; x++) {
 
-	    			if((this.getCandy(x,y).getColor()==0) && (x!=0)){
-	    				int i=x;
-	    				while(i!=0) {
-	    					/* deplacement si la case reste dans l'ecran */
+				if((this.getCandy(x,y).getColor()==0) && (x!=0)){
+					int i=x;
+					while(i!=0) {
+						/* deplacement si la case reste dans l'ecran */
 						this.getCandy(i,y).setColor(this.getCandy(i-1,y).getColor());
 						i--;
 					}
-	    				
-	    				if(i==0) {
-		    				this.getCandy(i,y).setColor((int)(Math.random()*(7)));
-	    				}
-	    			
-	    				this.getCandy(x,y).setASupprimer(false);
-			
-	    			}
-	    			
-	    			else if((this.getCandy(x,y).getColor()==0) && (x==0)) {
-	    				/* remplacement aleatoire si la case n'etait pas dans l'ecran */
-				    	this.getCandy(x,y).setColor((int)(Math.random()*(7)));
-				    	this.getCandy(x,y).setASupprimer(false);
+
+					if(i==0) {
+						this.getCandy(i,y).setColor((int)(Math.random()*(7)));
+					}
+
+					this.getCandy(x,y).setASupprimer(false);
+
 				}
-	    		}
-	    	}
+
+				else if((this.getCandy(x,y).getColor()==0) && (x==0)) {
+					/* remplacement aleatoire si la case n'etait pas dans l'ecran */
+					this.getCandy(x,y).setColor((int)(Math.random()*(7)));
+					this.getCandy(x,y).setASupprimer(false);
+				}
+			}
+		}
 	}
-	
+
 	/**
-	*	Méthode non commentée
-	*/
+	 *	Méthode non commentée
+	 */
 	public void eclater(){
 		int x,y;
-    		for(y=0; y<this.getWidth(); y++) {
-    	    		for(x=0; x<this.getHeight(); x++) {
-    				if(this.getCandy(x,y).getASupprimer()==true) {
-    					/* si le critere de suppression est verifie, contenu devient "vide" */
-    		    			this.getCandy(x,y).setColor(0);
-    		    		}
+		for(y=0; y<this.getWidth(); y++) {
+			for(x=0; x<this.getHeight(); x++) {
+				if(this.getCandy(x,y).getASupprimer()==true) {
+					/* si le critere de suppression est verifie, contenu devient "vide" */
+					this.getCandy(x,y).setColor(0);
+				}
 			}
-    		}
-    		this.compacter();
-    	}
+		}
+		this.compacter();
+	}
 
 }
