@@ -1,6 +1,6 @@
-package MG2D;
+package main.java.MG2D;
 
-import MG2D.geometrie.*;
+import main.java.MG2D.geometrie.*;
 
 import java.awt.Dimension;
 

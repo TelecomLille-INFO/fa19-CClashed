@@ -1,4 +1,4 @@
-package MG2D;
+package main.java.MG2D;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
