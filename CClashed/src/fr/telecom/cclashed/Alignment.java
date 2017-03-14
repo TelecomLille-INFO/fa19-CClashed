@@ -31,11 +31,11 @@ public class Alignment {
 	{
 		if(orientation == Sens.VERTICAL)
 		{
-			length = end.getRow() - start.getRow();
+			length = (end.getRow() - start.getRow()) + 1;
 		}
 		else if(orientation == Sens.HORIZONTAL)
 		{
-			length = end.getCol() - start.getCol();
+			length = (end.getCol() - start.getCol()) + 1;
 		}
 	}
 	
@@ -60,5 +60,11 @@ public class Alignment {
 	public void setEnd(Candy end) {
 		this.end = end;
 		calculateLength();
+	}
+	
+	public String toString()
+	{
+		String res = "Alignement : C1["+start.getCol()+","+start.getRow()+"] - C2["+end.getCol()+","+end.getRow()+"] - O:"+orientation+" - L:"+length+"\n";
+		return res;
 	}
 }

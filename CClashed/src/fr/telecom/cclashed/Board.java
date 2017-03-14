@@ -222,6 +222,8 @@ public class Board {
 		// On a notre liste d'alignements, on n'a plus qu'a la parcourir pour set les Candy a supprimer
 		if(!alignements.isEmpty()) {
 			for(Alignment al:alignements) {
+				//Ligne de test
+				System.out.println(al);
 				deleteCandiesInAlignment(al);
 			}
 		}
@@ -237,8 +239,8 @@ public class Board {
 			int yStart = al.getStart().getRow();
 			int length = al.getLength();
 			// Check if alignment contains 3 Candys or more
-			if(length >= 2) {
-				for(int i = 0; i <= length; ++i) {
+			if(length >= 3) {
+				for(int i = 0; i <= length - 1; ++i) {
 					grid[yStart+i][x].setASupprimer(true);
 				}
 			}
@@ -248,8 +250,8 @@ public class Board {
 			int xStart = al.getStart().getCol();
 			int length = al.getLength();
 			// Check if alignment contains 3 Candys or more
-			if(length >= 2) {
-				for(int i = 0; i <= length; ++i) {
+			if(length >= 3) {
+				for(int i = 0; i <= length - 1; ++i) {
 					grid[y][xStart+i].setASupprimer(true);
 				}
 			}
@@ -269,8 +271,8 @@ public class Board {
 			++k;
 			currentCandy = grid[c.getRow()+k][c.getCol()];
 			if(c.getColor() == currentCandy.getColor()) {
-				verticalAlignment.setEnd(currentCandy);
 				verticalAlignment.orientation = Sens.VERTICAL;
+				verticalAlignment.setEnd(currentCandy);
 			}
 			else {
 				return verticalAlignment;
@@ -292,8 +294,8 @@ public class Board {
 			++k;
 			currentCandy = grid[c.getRow()][c.getCol()+k];
 			if(c.getColor() == currentCandy.getColor()) {
-				horizontalAlignment.setEnd(currentCandy);
 				horizontalAlignment.orientation = Sens.HORIZONTAL;
+				horizontalAlignment.setEnd(currentCandy);
 			}
 			else {
 				return horizontalAlignment;
