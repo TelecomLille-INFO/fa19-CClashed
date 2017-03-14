@@ -220,7 +220,7 @@ public class Board {
 	 *	Marquer les bonbons à supprimer d'une liste d'alignements
 	 *	@param aligns Alignements à parcourir
 	 */
-	protected void deleteCandiesInAlignments(List<Alignment> aligns) {
+	public void deleteCandiesInAlignments(List<Alignment> aligns) {
 		for(Alignment al:aligns) {
 			if(al.orientation.equals(Sens.VERTICAL)) {
 				int x = al.getStart().getCol();
