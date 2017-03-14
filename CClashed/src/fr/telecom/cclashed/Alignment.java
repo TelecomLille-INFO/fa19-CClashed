@@ -17,6 +17,13 @@ public class Alignment {
 	public Alignment(Candy candyStart, Candy candyEnd){
 		this.start=candyStart;
 		this.end=candyEnd;
+		length = 0;
+	}
+	
+	public Alignment(Candy candyStart, Candy candyEnd, Sens orientation){
+		this.start=candyStart;
+		this.end=candyEnd;
+		this.orientation = orientation;
 		calculateLength();
 	}
 	
@@ -34,7 +41,6 @@ public class Alignment {
 	
 	public int getLength()
 	{
-		calculateLength();
 		return length;
 	}
 	
