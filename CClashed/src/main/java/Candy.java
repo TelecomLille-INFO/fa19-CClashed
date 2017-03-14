@@ -81,6 +81,13 @@ public class Candy {
 	}
 	
 	/**
+	*	Affecter une couleur aléatoire à un bonbon
+	*/
+	public void setRandomColor() {
+		this.color = (int)(Math.random()*(5)+1);
+	}
+	
+	/**
 	*	Accesseur
 	*	@return Entier représentant la ligne du bonbon
 	*/

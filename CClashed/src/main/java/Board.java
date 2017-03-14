@@ -319,7 +319,7 @@ public class Board {
 					}
 
 					if(i==0) {
-						this.getCandy(i,y).setColor((int)(Math.random()*(5)+1));
+						this.getCandy(i,y).setRandomColor();
 					}
 
 					this.getCandy(x,y).setASupprimer(false);
@@ -328,7 +328,7 @@ public class Board {
 
 				else if((this.getCandy(x,y).getColor()==0) && (x==0)) {
 					/* remplacement aleatoire si la case n'etait pas dans l'ecran */
-					this.getCandy(x,y).setColor((int)(Math.random()*(5)+1));
+					this.getCandy(x,y).setRandomColor();
 					this.getCandy(x,y).setASupprimer(false);
 				}
 			}
