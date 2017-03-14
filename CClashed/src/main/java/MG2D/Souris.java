@@ -1,9 +1,9 @@
-package MG2D;
+package main.java.MG2D;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import MG2D.geometrie.Point;
+import main.java.MG2D.geometrie.Point;
 
 /**
  * Cette classe implemente les methodes de MouseListener permettant la gestion de la souris.

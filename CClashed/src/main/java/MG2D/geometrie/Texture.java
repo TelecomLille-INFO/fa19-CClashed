@@ -1,4 +1,4 @@
-package MG2D.geometrie;
+package main.java.MG2D.geometrie;
 
 import java.awt.Color;
 import java.awt.Graphics;

@@ -1,4 +1,4 @@
-package MG2D.geometrie;
+package main.java.MG2D.geometrie;
 
 /**
  * Cette classe permet de gérer les collisions via le principe des AABB (Axis Aligned Bounding Box).
