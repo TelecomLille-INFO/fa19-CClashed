@@ -1,5 +1,7 @@
 package fr.telecom.cclashed;
 
+import java.util.List;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -11,15 +13,18 @@ public class Main {
 			Candy c = new Candy(3,3,j);
 			plateau.addCandy(c);
 		}*/
-		
-		System.out.println(plateau);
-		
-		do{
-			plateau.detectAlignments();
-			plateau.eclater();
+		//do{
 			System.out.println(plateau);
-			plateau.detectAlignments();
-		}while(plateau.checkTurnHasEnded()!=true);
+			List<Alignment> currentAlignments = plateau.detectAlignments();
+			for(Alignment al:currentAlignments)
+			{
+				System.out.println(al);
+			}
+			plateau.deleteCandiesInAlignments(currentAlignments);
+			plateau.eclater();
+		//}while(!plateau.checkTurnHasEnded());
+	
+		System.out.println(plateau);
 		
 		/*System.out.println("Ajout Candy rouge en 2/4\n");
 		Candy redCandy = new Candy(4,2,4);

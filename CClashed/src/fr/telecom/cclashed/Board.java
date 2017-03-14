@@ -122,14 +122,7 @@ public class Board {
 	*	@return True si le tour de jeu est terminé, false sinon
 	*/
 	public boolean checkTurnHasEnded() {
-		for(int i=0; i<this.getHeight(); i++) {
-			for(int j=0; j<this.getWidth(); j++) {
-				if(this.getCandy(i,j).getASupprimer()==true) {
-					return false;
-				}
-			}
-		}
-		return true;
+		return detectAlignments().isEmpty();
 	}
 
 	/**
@@ -190,8 +183,9 @@ public class Board {
 	
 	/**
 	*	Méthode permettant de détecter les alignements et marquer les Candy à supprimer
+	*	@return List<Alignment> liste des alignements détectés
 	*/
-	public void detectAlignments() {
+	public List<Alignment> detectAlignments() {
 		//Liste des alignements à remplir
 		List<Alignment> alignements = new ArrayList<Alignment>();
 		
@@ -209,7 +203,7 @@ public class Board {
 					}
 				}
 				// ... ou horizontal
-				else if(!currentCandy.isWithinAlignment(Sens.HORIZONTAL, alignements)) {
+				if(!currentCandy.isWithinAlignment(Sens.HORIZONTAL, alignements)) {
 					// Si non on detecte les eventuels alignements
 					Alignment hAlign = detectHorizontalAlignment(currentCandy);
 					if(hAlign.orientation == Sens.HORIZONTAL) {
@@ -218,44 +212,40 @@ public class Board {
 				}
 			}
 		}
-		
 		// On a notre liste d'alignements, on n'a plus qu'a la parcourir pour set les Candy a supprimer
-		if(!alignements.isEmpty()) {
-			for(Alignment al:alignements) {
-				//Ligne de test
-				System.out.println(al);
-				deleteCandiesInAlignment(al);
-			}
-		}
+		return alignements;
 	}
 	
 	/**
-	*	Marquer les bonbons à supprimer d'un alignement
-	*	@param al Alignement à parcourir
-	*/
-	protected void deleteCandiesInAlignment(Alignment al) {
-		if(al.orientation.equals(Sens.VERTICAL)) {
-			int x = al.getStart().getCol();
-			int yStart = al.getStart().getRow();
-			int length = al.getLength();
-			// Check if alignment contains 3 Candys or more
-			if(length >= 3) {
-				for(int i = 0; i <= length - 1; ++i) {
-					grid[yStart+i][x].setASupprimer(true);
+	 *	Marquer les bonbons à supprimer d'une liste d'alignements
+	 *	@param aligns Alignements à parcourir
+	 */
+	protected void deleteCandiesInAlignments(List<Alignment> aligns) {
+		for(Alignment al:aligns) {
+			if(al.orientation.equals(Sens.VERTICAL)) {
+				int x = al.getStart().getCol();
+				int yStart = al.getStart().getRow();
+				int length = al.getLength();
+				// Check if alignment contains 3 Candys or more
+				if(length >= 3) {
+					for(int i = 0; i <= length - 1; ++i) {
+						grid[yStart+i][x].setASupprimer(true);
+					}
+				}
+			}
+			else if(al.orientation.equals(Sens.HORIZONTAL)) {
+				int y = al.getStart().getRow();
+				int xStart = al.getStart().getCol();
+				int length = al.getLength();
+				// Check if alignment contains 3 Candys or more
+				if(length >= 3) {
+					for(int i = 0; i <= length - 1; ++i) {
+						grid[y][xStart+i].setASupprimer(true);
+					}
 				}
 			}
 		}
-		else if(al.orientation.equals(Sens.HORIZONTAL)) {
-			int y = al.getStart().getRow();
-			int xStart = al.getStart().getCol();
-			int length = al.getLength();
-			// Check if alignment contains 3 Candys or more
-			if(length >= 3) {
-				for(int i = 0; i <= length - 1; ++i) {
-					grid[y][xStart+i].setASupprimer(true);
-				}
-			}
-		}
+
 	}
 	
 	/**
