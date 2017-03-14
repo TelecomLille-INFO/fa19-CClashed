@@ -37,7 +37,7 @@ public class Candy {
 	*	@param col Colonne
 	*/
 	public Candy(int row, int col) {
-		this.color = (int)(Math.random()*(6));
+		this.color = (int)(Math.random()*(6)+1);
 		this.row = row;
 		this.col = col;
 	}

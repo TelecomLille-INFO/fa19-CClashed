@@ -7,10 +7,10 @@ public class Main {
 
 		Board plateau = new Board();
 		
-		for(int j = 2; j<5;++j){
+		/*for(int j = 2; j<5;++j){
 			Candy c = new Candy(3,3,j);
 			plateau.addCandy(c);
-		}
+		}*/
 		
 		System.out.println(plateau);
 		
@@ -18,6 +18,7 @@ public class Main {
 			plateau.detectAlignments();
 			plateau.eclater();
 			System.out.println(plateau);
+			plateau.detectAlignments();
 		}while(plateau.checkTurnHasEnded()!=true);
 		
 		/*System.out.println("Ajout Candy rouge en 2/4\n");

@@ -173,5 +173,10 @@ public class TestBoard {
 		assertNotEquals(c1.getColor(),2);
 				
 	}
+	
+	@Test
+	public void testEclater(){
+		
+	}
 
 }

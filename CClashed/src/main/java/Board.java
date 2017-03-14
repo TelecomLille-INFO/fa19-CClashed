@@ -307,8 +307,8 @@ public class Board {
 	 */
 	public void compacter(){
 		int x,y;
-		for(y=0; y<this.width; y++) {
-			for(x=0; x<this.height; x++) {
+		for(y=this.getWidth()-1; y>=0; y--) {
+			for(x=this.getHeight()-1; x>=0; x--) {
 
 				if((this.getCandy(x,y).getColor()==0) && (x!=0)){
 					int i=x;
@@ -319,7 +319,7 @@ public class Board {
 					}
 
 					if(i==0) {
-						this.getCandy(i,y).setColor((int)(Math.random()*(7)));
+						this.getCandy(i,y).setColor((int)(Math.random()*(6))+1);
 					}
 
 					this.getCandy(x,y).setASupprimer(false);
@@ -328,7 +328,7 @@ public class Board {
 
 				else if((this.getCandy(x,y).getColor()==0) && (x==0)) {
 					/* remplacement aleatoire si la case n'etait pas dans l'ecran */
-					this.getCandy(x,y).setColor((int)(Math.random()*(7)));
+					this.getCandy(x,y).setColor((int)(Math.random()*(6))+1);
 					this.getCandy(x,y).setASupprimer(false);
 				}
 			}
