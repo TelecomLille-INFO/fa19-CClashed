@@ -17,18 +17,15 @@ public class Candy {
 	/** Constante 'EMPTY' (entier : 0) pouvant être affectée à l'attribut color */
    	public static final int EMPTY=0;
    	/** Constante 'ORANGE' (entier : 1) pouvant être affectée à l'attribut color */
-    	public static final int ORANGE=1;
-    	/** Constante 'GREEN' (entier : 2) pouvant être affectée à l'attribut color */
-    	public static final int GREEN=2;
-    	/** Constante 'YELLOW' (entier : 3) pouvant être affectée à l'attribut color */
-    	public static final int YELLOW=3;
-    	/** Constante 'RED' (entier : 4) pouvant être affectée à l'attribut color */
-    	public static final int RED=4;
-    	/** Constante 'CAMEL' (entier : 5) pouvant être affectée à l'attribut color */
-    	public static final int CAMEL=5;
-    	
-    	/** Booléen indiquant si le bonbon en question est à supprimer du plateau ou non */
-    	protected boolean aSupprimer=false;
+    public static final int ORANGE=1;
+    /** Constante 'GREEN' (entier : 2) pouvant être affectée à l'attribut color */
+    public static final int GREEN=2;
+    /** Constante 'YELLOW' (entier : 3) pouvant être affectée à l'attribut color */
+    public static final int YELLOW=3;
+    /** Constante 'RED' (entier : 4) pouvant être affectée à l'attribut color */
+    public static final int RED=4;
+    /** Constante 'CAMEL' (entier : 5) pouvant être affectée à l'attribut color */
+    public static final int CAMEL=5;
     	
 
 	/**
@@ -117,22 +114,6 @@ public class Candy {
 	*/
 	public void setCol(int col) {
 		this.col = col;
-	}
-	
-	/**
-	*	Accesseur
-	*	@return Booléen indiquant si le bonbon en question est à supprimer du plateau ou non
-	*/
-	public boolean getASupprimer() {
-		return this.aSupprimer;
-	}
-
-	/**
-	*	Mutateur
-	*	@param aSupprimer Booléen à true si le bonbon est à supprimer du plateau, false sinon
-	*/
-	public void setASupprimer(boolean aSupprimer) {
-		this.aSupprimer = aSupprimer;
 	}
 	
 	/**

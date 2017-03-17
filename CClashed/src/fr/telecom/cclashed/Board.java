@@ -178,8 +178,8 @@ public class Board {
 	}
 	
 	/**
-	*	Méthode permettant de détecter les alignements et marquer les Candy à supprimer
-	*	@return List<Alignment> liste des alignements détectés
+	*	Méthode permettant de détecter les alignements
+	*	@return List<Alignment> Liste des alignements détectés
 	*/
 	public List<Alignment> detectAlignments() {
 		//Liste des alignements à remplir
@@ -213,7 +213,7 @@ public class Board {
 	}
 	
 	/**
-	 *	Marquer les bonbons à supprimer d'une liste d'alignements
+	 *	Méthode qui attribue la couleur 'EMPTY' aux bonbons faisant partie d'alignements de longueur supérieure ou égale à 3
 	 *	@param aligns Alignements à parcourir
 	 */
 	public void deleteCandiesInAlignments(List<Alignment> aligns) {
@@ -225,7 +225,7 @@ public class Board {
 				// Check if alignment contains 3 Candys or more
 				if(length >= 3) {
 					for(int i = 0; i <= length - 1; ++i) {
-						grid[yStart+i][x].setASupprimer(true);
+						grid[yStart+i][x].setColor(Candy.EMPTY);
 					}
 				}
 			}
@@ -236,7 +236,7 @@ public class Board {
 				// Check if alignment contains 3 Candys or more
 				if(length >= 3) {
 					for(int i = 0; i <= length - 1; ++i) {
-						grid[y][xStart+i].setASupprimer(true);
+						grid[y][xStart+i].setColor(Candy.EMPTY);
 					}
 				}
 			}
@@ -306,15 +306,13 @@ public class Board {
 						this.getCandy(i,y).setRandomColor();
 					}
 
-					this.getCandy(x,y).setASupprimer(false);
-
 				}
 
 				else if((this.getCandy(x,y).getColor()==0) && (x==0)) {
 					/* remplacement aleatoire si la case n'etait pas dans l'ecran */
 					this.getCandy(x,y).setRandomColor();
-					this.getCandy(x,y).setASupprimer(false);
 				}
+				
 			}
 		}
 	}
@@ -324,14 +322,6 @@ public class Board {
 	 */
 	public void eclater(){
 		int x,y;
-		for(y=0; y<this.getWidth(); y++) {
-			for(x=0; x<this.getHeight(); x++) {
-				if(this.getCandy(x,y).getASupprimer()==true) {
-					/* si le critère de suppression est verifié, contenu devient "vide" */
-					this.getCandy(x,y).setColor(0);
-				}
-			}
-		}
 		for(y=0; y<this.getWidth(); y++) {
 			for(x=0; x<this.getHeight(); x++) {
 				if(this.getCandy(x,y).getColor() == 0) {
