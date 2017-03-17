@@ -1,8 +1,9 @@
 package fr.telecom.cclashed;
 
 /**
-*	La classe Alignment représente un alignement de bonbons
-*/
+ * La classe Alignment représente un alignement de bonbons
+ * @author TeamCClashed
+ */
 public class Alignment {
 	
 	/** Représente le premier bonbon de l'alignement */
@@ -103,9 +104,9 @@ public class Alignment {
 	}
 	
 	/**
-	*	Afficher l'état d'un alignement
-	*	@return Chaîne de caractères représentant l'état d'un alignement
-	*/
+	 * Afficher l'état d'un alignement
+	 * @return Chaîne de caractères représentant l'état d'un alignement
+	 */
 	public String toString() {
 		String res = "Alignement : C1["+ this.start.getCol() + "," + this.start.getRow() + "] <--> C2[" + this.end.getCol() + "," + this.end.getRow()+ "] | L:" + this.length + " | O:" + this.orientation + "\n";
 		return res;

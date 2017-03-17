@@ -3,8 +3,9 @@ package fr.telecom.cclashed;
 import java.util.List;
 
 /**
-*	La classe Candy représente un bonbon sous sa forme la plus abstraite
-*/
+ * La classe Candy représente un bonbon sous sa forme la plus abstraite
+ * @author TeamCClashed
+ */
 public class Candy {
 
 	/** Représente la couleur d'un bonbon */
@@ -29,10 +30,10 @@ public class Candy {
     	
 
 	/**
-	*	Constructeur de bonbon prenant en paramètres la ligne et la colonne et affectant aléatoirement une couleur
-	*	@param row Ligne
-	*	@param col Colonne
-	*/
+     * Constructeur de bonbon prenant en paramètres la ligne et la colonne et affectant aléatoirement une couleur
+     * @param row Ligne
+     * @param col Colonne
+     */
 	public Candy(int row, int col) {
 		this.color = (int)(Math.random()*(5)+1);
 		this.row = row;
@@ -40,11 +41,11 @@ public class Candy {
 	}
 	
 	/**
-	*	Constructeur de bonbon prenant en paramètres la couleur, la ligne et la colonne
-	*	@param color Couleur
-	*	@param row Ligne
-	*	@param col Colonne
-	*/
+	 * Constructeur de bonbon prenant en paramètres la couleur, la ligne et la colonne
+	 * @param color Couleur
+	 * @param row Ligne
+	 * @param col Colonne
+	 */
 	public Candy(int color, int row, int col) {
 		this.color = color;
 		this.row = row;
@@ -52,9 +53,9 @@ public class Candy {
 	}
 	
 	/**
-	*	Constructeur par copie
-	*	@param c Bonbon depuis lequel on se base
-	*/
+	 * Constructeur par copie
+	 * @param c Bonbon depuis lequel on se base
+	 */
 	public Candy(Candy c) {
 		this.color = c.color;
 		this.row = c.row;
@@ -62,66 +63,66 @@ public class Candy {
 	}
 	
 	/**
-	*	Accesseur
-	*	@return Entier représentant la couleur du bonbon
-	*/
+	 * Accesseur
+	 * @return Entier représentant la couleur du bonbon
+	 */
 	public int getColor() {
 		return this.color;
 	}
 	
 	/**
-	*	Mutateur
-	*	@param color Entier représentant la couleur du bonbon
-	*/
+	 * Mutateur
+	 * @param color Entier représentant la couleur du bonbon
+	 */
 	public void setColor(int color) {
 		this.color = color;
 	}
 	
 	/**
-	*	Affecter une couleur aléatoire à un bonbon
-	*/
+	 * Affecter une couleur aléatoire à un bonbon
+	 */
 	public void setRandomColor() {
 		this.color = (int)(Math.random()*(5)+1);
 	}
 	
 	/**
-	*	Accesseur
-	*	@return Entier représentant la ligne du bonbon
-	*/
+	 * Accesseur
+	 * @return Entier représentant la ligne du bonbon
+	 */
 	public int getRow() {
 		return this.row;
 	}
 	
 	/**
-	*	Mutateur
-	*	@param row Numéro de ligne du bonbon
-	*/
+	 * Mutateur
+	 * @param row Numéro de ligne du bonbon
+	 */
 	public void setRow(int row) {
 		this.row = row;
 	}
 	
 	/**
-	*	Accesseur
-	*	@return Entier représentant la colonne du bonbon
-	*/
+	 * Accesseur
+	 * @return Entier représentant la colonne du bonbon
+	 */
 	public int getCol() {
 		return this.col;
 	}
 	
 	/**
-	*	Mutateur
-	*	@param col Numéro de colonne du bonbon
-	*/
+	 * Mutateur
+	 * @param col Numéro de colonne du bonbon
+	 */
 	public void setCol(int col) {
 		this.col = col;
 	}
 	
 	/**
-	*	Détecter si le bonbon est dans un alignement
-	*	@param sens Sens de l'alignement
-	*	@param liste Liste à analyser
-	*	@return True si le bonbon est dans l'alignement, false sinon
-	*/
+	 * Détecter si le bonbon est dans un alignement
+	 * @param sens Sens de l'alignement
+	 * @param liste Liste à analyser
+	 * @return True si le bonbon est dans l'alignement, false sinon
+	 */
 	public boolean isWithinAlignment(Sens sens, List<Alignment> liste) {
 		boolean res = false;
 		for(Alignment al: liste)
@@ -158,10 +159,10 @@ public class Candy {
 	}
 	
 	/**
-	*	Tester l'égalité de deux bonbons
-	*	@param c Bonbon dont on veut tester l'égalite avec l'instance courante
-	*	@return True si les deux bonbons sont égaux, false sinon
-	*/
+	 * Tester l'égalité de deux bonbons
+	 * @param c Bonbon dont on veut tester l'égalite avec l'instance courante
+	 * @return True si les deux bonbons sont égaux, false sinon
+	 */
 	public boolean equals(Candy c) {
 		if ((this.color == c.color) && (this.row == c.row) && (this.col == c.col)) {
 			return true;
@@ -172,9 +173,9 @@ public class Candy {
 	}
 	
 	/**
-	*	Afficher l'état d'un bonbon
-	*	@return Chaîne de caractères représentant l'état d'un bonbon
-	*/
+	 * Afficher l'état d'un bonbon
+	 * @return Chaîne de caractères représentant l'état d'un bonbon
+	 */
 	public String toString() {
 		return "/----------\n| Affichage du bonbon :\n|\n| Id couleur = " + this.color + "\n| N. ligne = " + this.row + "\n| N. colonne = " + this.col + "\n|\n----------/";
 	}

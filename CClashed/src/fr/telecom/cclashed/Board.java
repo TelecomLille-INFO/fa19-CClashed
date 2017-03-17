@@ -3,8 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-*	La classe Board représente le plateau de jeu
-*/
+ * La classe Board représente le plateau de jeu
+ * @author TeamCClashed
+ */
 public class Board {
 
 	/** Représente la hauteur du plateau de jeu */
@@ -17,8 +18,8 @@ public class Board {
 	private List<Move> possibleMoves;
 
 	/**
-	*	Constructeur par défaut de plateau
-	*/
+	 * Constructeur par défaut de plateau
+	 */
 	public Board() {
 		this.height = 8;
 		this.width = 8;
@@ -28,10 +29,10 @@ public class Board {
 	}
 	
 	/**
-	*	Constructeur de plateau prenant en paramètres la hauteur et la largeur du plateau
-	*	@param height Entier représentant la hauteur du plateau
-	*	@param width Entier représentant la largeur du plateau
-	*/
+	 * Constructeur de plateau prenant en paramètres la hauteur et la largeur du plateau
+	 * @param height Entier représentant la hauteur du plateau
+	 * @param width Entier représentant la largeur du plateau
+	 */
 	public Board(int height, int width) {
 		this.height = height;
 		this.width = width;
@@ -52,114 +53,114 @@ public class Board {
 			}
 		}	
 	}
-
+	
 	/**
-	*	Accesseur
-	*	@return Entier représentant la hauteur du plateau de jeu
-	*/
+	 * Accesseur
+	 * @return Entier représentant la hauteur du plateau de jeu
+	 */
 	public int getHeight() {
 		return this.height;
 	}
 
 	/**
-	*	Mutateur
-	*	@param height Entier représentant la hauteur du plateau de jeu
-	*/
+	 * Mutateur
+	 * @param height Entier représentant la hauteur du plateau de jeu
+	 */
 	public void setHeight(int height) {
 		this.height = height;
 	}
 
 	/**
-	*	Accesseur
-	*	@return Entier représentant la largeur du plateau de jeu
-	*/
+	 * Accesseur
+	 * @return Entier représentant la largeur du plateau de jeu
+	 */
 	public int getWidth() {
 		return this.width;
 	}
 
 	/**
-	*	Mutateur
-	*	@param width Entier représentant la largeur du plateau de jeu
-	*/
+	 * Mutateur
+	 * @param width Entier représentant la largeur du plateau de jeu
+	 */
 	public void setWidth(int width) {
 		this.width = width;
 	}
 
 	/**
-	*	Ajouter un bonbon généré aléatoirement en une case donnée du plateau de jeu
-	*	@param row Entier représentant le numéro de ligne
-	*	@param col Entier représentant le numéro de colonne
-	*/
+	 * Ajouter un bonbon généré aléatoirement en une case donnée du plateau de jeu
+	 * @param row Entier représentant le numéro de ligne
+	 * @param col Entier représentant le numéro de colonne
+	 */
 	public void addCandy(int row, int col) {
 		Candy bonbon = new Candy(row,col);
 		grid[row][col] = bonbon;
 	}
 
 	/**
-	*	Ajouter un bonbon précis sur le plateau de jeu
-	*	@param bonbon Candy a ajouter;
-	*/
+	 * Ajouter un bonbon précis sur le plateau de jeu
+	 * @param bonbon Candy à ajouter
+	 */
 	public void addCandy(Candy bonbon) {
 		grid[bonbon.getRow()][bonbon.getCol()] = bonbon;
 	}
 
 	/**
-	*	Récupérer un bonbon situé sur une case donnée du plateau de jeu
-	*	@param row Entier représentant le numéro de ligne
-	*	@param col Entier représentant le numéro de colonne
-	*	@return Bonbon situé aux coordonnées passées en paramètres
-	*/
+	 * Récupérer un bonbon situé sur une case donnée du plateau de jeu
+	 * @param row Entier représentant le numéro de ligne
+	 * @param col Entier représentant le numéro de colonne
+	 * @return Bonbon situé aux coordonnées passées en paramètres
+	 */
 	public Candy getCandy(int row, int col) {
 		return grid[row][col];
 	}
 
 	/**
-	*	Vérifier si le tour de jeu est terminé
-	*	@return True si le tour de jeu est terminé, false sinon
-	*/
+	 * Vérifier si le tour de jeu est terminé
+	 * @return True si le tour de jeu est terminé, false sinon
+	 */
 	public boolean checkTurnHasEnded() {
 		return detectAlignments().isEmpty();
 	}
 
 	/**
-	*	Vérifier si un mouvement est possible sur le plateau de jeu
-	*	@param m Mouvement dont on veut vérifier la possibilité
-	*	@return True si le mouvement est possible, false sinon
-	*/
+	 * Vérifier si un mouvement est possible sur le plateau de jeu
+	 * @param m Mouvement dont on veut vérifier la possibilité
+	 * @return True si le mouvement est possible, false sinon
+	 */
 	public boolean checkMove(Move m) {
 		System.out.println("Appel de la methode checkMove(Move m) de la classe Board");
 		return true;
 	}
 
 	/**
-	*	Chercher les mouvements possibles sur le plateau de jeu
-	*/
+	 * Chercher les mouvements possibles sur le plateau de jeu
+	 */
 	public void findPossibleMoves(){
 		possibleMoves.clear();
 		//TODO
 	}
 
 	/**
-	*	Effectuer un mouvement sur le plateau de jeu
-	*	@param m Mouvement à effectuer
-	*/
+	 * Effectuer un mouvement sur le plateau de jeu
+	 * @param m Mouvement à effectuer
+	 */
 	public void executeMove(Move m) {
 		System.out.println("Appel de la methode executeMove(Move m) de la classe Board");
 	}
 
 	/**
-	*	Vérifier la condition d'arrêt de partie
-	*	@return True si la partie est terminée, false sinon
-	*/
+	 * Vérifier la condition d'arrêt de partie
+	 * @return True si la partie est terminée, false sinon
+	 */
 	public Boolean checkGameHasEnded()
 	{
 		return possibleMoves.isEmpty();
 	}
 
 	/**
-	*	Afficher l'état d'un plateau de jeu
-	*	@return Chaîne de caractères représentant l'état d'un plateau de jeu
-	*/
+	 * Afficher l'état d'un plateau de jeu
+	 * @return Chaîne de caractères représentant l'état d'un plateau de jeu
+	 */
 	public String toString() {
 		String res = "Plateau de jeu :\n";
 		for(int i=0; i<height; ++i) {
@@ -178,9 +179,9 @@ public class Board {
 	}
 	
 	/**
-	*	Méthode permettant de détecter les alignements
-	*	@return List<Alignment> Liste des alignements détectés
-	*/
+	 * Méthode permettant de détecter les alignements
+	 * @return Liste des alignements détectés
+	 */
 	public List<Alignment> detectAlignments() {
 		//Liste des alignements à remplir
 		List<Alignment> alignements = new ArrayList<Alignment>();
@@ -213,8 +214,8 @@ public class Board {
 	}
 	
 	/**
-	 *	Méthode qui attribue la couleur 'EMPTY' aux bonbons faisant partie d'alignements de longueur supérieure ou égale à 3
-	 *	@param aligns Alignements à parcourir
+	 * Méthode qui attribue la couleur 'EMPTY' aux bonbons faisant partie d'alignements de longueur supérieure ou égale à 3
+	 * @param aligns Alignements à parcourir
 	 */
 	public void deleteCandiesInAlignments(List<Alignment> aligns) {
 		for(Alignment al:aligns) {
