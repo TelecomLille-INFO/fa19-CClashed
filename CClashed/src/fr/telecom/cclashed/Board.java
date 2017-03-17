@@ -24,7 +24,6 @@ public class Board {
 		this.width = 8;
 		grid = new Candy[height][width];
 		possibleMoves = new ArrayList<Move>();
-		/* A voir comment on initialise le tableau et la liste */
 		resetBoard();
 	}
 	
@@ -38,7 +37,6 @@ public class Board {
 		this.width = width;
 		grid = new Candy[height][width];
 		possibleMoves = new ArrayList<Move>();
-		/* A voir comment on initialise le tableau et la liste */
 		resetBoard();
 	}
 	
@@ -47,10 +45,8 @@ public class Board {
 	 */
 	private void resetBoard()
 	{
-		for(int i = 0; i<this.getHeight();++i)
-		{
-			for(int j = 0; j<this.getWidth();++j)
-			{
+		for(int i=0; i<this.getHeight();++i) {
+			for(int j=0; j<this.getWidth();++j) {
 				Candy c = new Candy(i,j);
 				this.addCandy(c);
 			}
@@ -192,12 +188,12 @@ public class Board {
 		//Parcours vertical
 		for(int i=0; i<this.getHeight(); ++i) {
 			//Parcours horizontal
-			for(int j = 0; j<this.getWidth();++j) {
+			for(int j=0; j<this.getWidth();++j) {
 				Candy currentCandy = grid[i][j];
 				// On checke si le Candy est deja dans un alignement vertical...
 				if(!currentCandy.isWithinAlignment(Sens.VERTICAL, alignements)) {
 					// Si non on detecte les eventuels alignements
-					Alignment vAlign = detectVerticalAlignment(currentCandy);
+					Alignment vAlign = detectAlignment(currentCandy, Sens.VERTICAL);
 					if(vAlign.orientation == Sens.VERTICAL) {
 						alignements.add(vAlign);
 					}
@@ -205,7 +201,7 @@ public class Board {
 				// ... ou horizontal
 				if(!currentCandy.isWithinAlignment(Sens.HORIZONTAL, alignements)) {
 					// Si non on detecte les eventuels alignements
-					Alignment hAlign = detectHorizontalAlignment(currentCandy);
+					Alignment hAlign = detectAlignment(currentCandy, Sens.HORIZONTAL);
 					if(hAlign.orientation == Sens.HORIZONTAL) {
 						alignements.add(hAlign);
 					}
@@ -249,53 +245,49 @@ public class Board {
 	}
 	
 	/**
-	*	Détecter un alignement vertical à partir d'un bonbon
-	*	@param c Bonbon à analyser
-	*	@return Objet de type Alignment
-	*/
-	protected Alignment detectVerticalAlignment(Candy c) {
+	 * Détecter un alignement à partir d'un bonbon
+	 * @param c Bonbon à analyser
+	 * @param orientation Orientation de l'alignement
+	 * @return Objet de type Alignment
+	 */
+	protected Alignment detectAlignment(Candy c, Sens orientation) {
 		// Alignement resultat
-		Alignment verticalAlignment = new Alignment(c,c);
+		Alignment alignment = new Alignment(c,c);
 		Candy currentCandy = new Candy(c);
-		for(int k=0; c.getRow()+k+1 < this.getHeight();) {
-			++k;
-			currentCandy = grid[c.getRow()+k][c.getCol()];
-			if(c.getColor() == currentCandy.getColor()) {
-				verticalAlignment.orientation = Sens.VERTICAL;
-				verticalAlignment.setEnd(currentCandy);
-			}
-			else {
-				return verticalAlignment;
+		
+		if (orientation == Sens.HORIZONTAL) {
+			for(int k=0 ; c.getCol()+k+1 < this.getWidth();) {
+				++k;
+				currentCandy = grid[c.getRow()][c.getCol()+k];
+				if(c.getColor() == currentCandy.getColor()) {
+					alignment.orientation = Sens.HORIZONTAL;
+					alignment.setEnd(currentCandy);
+				}
+				else {
+					return alignment;
+				}
 			}
 		}
-		return verticalAlignment;
+		
+		else if (orientation == Sens.VERTICAL) {
+			for(int k=0; c.getRow()+k+1 < this.getHeight();) {
+				++k;
+				currentCandy = grid[c.getRow()+k][c.getCol()];
+				if(c.getColor() == currentCandy.getColor()) {
+					alignment.orientation = Sens.VERTICAL;
+					alignment.setEnd(currentCandy);
+				}
+				else {
+					return alignment;
+				}
+			}
+		}
+		
+		return alignment;
 	}
 	
 	/**
-	*	Détecter un alignement horizontal à partir d'un bonbon
-	*	@param c Bonbon à analyser
-	*	@return Objet de type Alignment
-	*/
-	protected Alignment detectHorizontalAlignment(Candy c) {
-		// Alignement resultat
-		Alignment horizontalAlignment = new Alignment(c,c);
-		Candy currentCandy = new Candy(c);
-		for(int k=0; c.getCol()+k+1 < this.getWidth();) {
-			++k;
-			currentCandy = grid[c.getRow()][c.getCol()+k];
-			if(c.getColor() == currentCandy.getColor()) {
-				horizontalAlignment.orientation = Sens.HORIZONTAL;
-				horizontalAlignment.setEnd(currentCandy);
-			}
-			else {
-				return horizontalAlignment;
-			}
-		}
-		return horizontalAlignment;
-	}
-	
-	/**
-	 *	Méthode non commentée
+	 *	Méthode qui parcourt le plateau de jeu afin de faire jouer la gravité
 	 */
 	public void compacter(){
 		int x,y;
@@ -328,19 +320,26 @@ public class Board {
 	}
 
 	/**
-	 *	Méthode non commentée
+	 *	Méthode qui parcourt le plateau de jeu, et attribue une couleur vide aux bonbons à supprimer
 	 */
 	public void eclater(){
 		int x,y;
 		for(y=0; y<this.getWidth(); y++) {
 			for(x=0; x<this.getHeight(); x++) {
 				if(this.getCandy(x,y).getASupprimer()==true) {
-					/* si le critere de suppression est verifie, contenu devient "vide" */
+					/* si le critère de suppression est verifié, contenu devient "vide" */
 					this.getCandy(x,y).setColor(0);
 				}
 			}
 		}
-		this.compacter();
+		for(y=0; y<this.getWidth(); y++) {
+			for(x=0; x<this.getHeight(); x++) {
+				if(this.getCandy(x,y).getColor() == 0) {
+					System.out.println(this);
+					this.compacter();
+				}
+			}
+		}
 	}
 
 }
