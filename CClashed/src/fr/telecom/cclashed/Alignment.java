@@ -3,6 +3,7 @@ package fr.telecom.cclashed;
 /**
  * La classe Alignment représente un alignement de bonbons
  * @author TeamCClashed
+ * 
  */
 public class Alignment {
 	

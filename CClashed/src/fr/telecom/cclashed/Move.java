@@ -3,6 +3,7 @@ package fr.telecom.cclashed;
 /**
  * La classe Move représente un mouvement, c'est-à-dire un switch possible entre deux bonbons
  * @author TeamCClashed
+ * 
  */
 public class Move {
 
@@ -25,8 +26,7 @@ public class Move {
 	 * Accesseur
 	 * @return Premier bonbon associé au mouvement
 	 */
-	public Candy getCandy1()
-	{	
+	public Candy getCandy1() {	
 		return candy1;
 	}
 	
@@ -34,8 +34,7 @@ public class Move {
 	 * Accesseur
 	 * @return Second bonbon associé au mouvement
 	 */
-	public Candy getCandy2()
-	{	
+	public Candy getCandy2() {	
 		return candy2;
 	}
 	

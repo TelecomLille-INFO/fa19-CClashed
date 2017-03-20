@@ -1,8 +1,10 @@
 package fr.telecom.cclashed;
 
 /**
-*	La classe RegularCandy représente un bonbon classique, elle hérite de la classe Candy
-*/
+ * La classe RegularCandy représente un bonbon classique, elle hérite de la classe Candy
+ * @author TeamCClashed
+ * 
+ */
 public class RegularCandy extends Candy {
 
 	/**

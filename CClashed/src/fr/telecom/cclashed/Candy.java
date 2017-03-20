@@ -5,6 +5,7 @@ import java.util.List;
 /**
  * La classe Candy représente un bonbon sous sa forme la plus abstraite
  * @author TeamCClashed
+ * 
  */
 public class Candy {
 
@@ -18,7 +19,7 @@ public class Candy {
 	/** Constante 'EMPTY' (entier : 0) pouvant être affectée à l'attribut color */
    	public static final int EMPTY=0;
    	/** Constante 'ORANGE' (entier : 1) pouvant être affectée à l'attribut color */
-    public static final int ORANGE=1;
+   	public static final int ORANGE=1;
     /** Constante 'GREEN' (entier : 2) pouvant être affectée à l'attribut color */
     public static final int GREEN=2;
     /** Constante 'YELLOW' (entier : 3) pouvant être affectée à l'attribut color */
@@ -125,30 +126,24 @@ public class Candy {
 	 */
 	public boolean isWithinAlignment(Sens sens, List<Alignment> liste) {
 		boolean res = false;
-		for(Alignment al: liste)
-		{
-			if(al.orientation.equals(sens))
-			{
-				if(sens.equals(Sens.VERTICAL))
-				{
+		for(Alignment al: liste) {
+			if(al.orientation.equals(sens)) {
+				if(sens.equals(Sens.VERTICAL)) {
 					int color = al.getStart().getColor();
 					int x = al.getStart().getCol();
 					int yStart = al.getStart().getRow();
 					int yEnd = al.getEnd().getRow();
-					if(this.getColor() == color && this.getCol() == x)
-					{
+					if(this.getColor() == color && this.getCol() == x) {
 						if(this.getRow() >= yStart && this.getRow() <= yEnd)
 							res = true;
 					}
 				}
-				else if(sens.equals(Sens.HORIZONTAL))
-				{
+				else if(sens.equals(Sens.HORIZONTAL)) {
 					int color = al.getStart().getColor();
 					int y = al.getStart().getRow();
 					int xStart = al.getStart().getCol();
 					int xEnd = al.getEnd().getCol();
-					if(this.getColor() == color && this.getRow() == y)
-					{
+					if(this.getColor() == color && this.getRow() == y) {
 						if(this.getCol() >= xStart && this.getCol() <= xEnd)
 							res = true;
 					}

@@ -5,6 +5,7 @@ import java.util.List;
 /**
  * La classe Board représente le plateau de jeu
  * @author TeamCClashed
+ * 
  */
 public class Board {
 
@@ -44,8 +45,7 @@ public class Board {
 	/**
 	 * Méthode permettant de réinitialiser le plateau
 	 */
-	private void resetBoard()
-	{
+	private void resetBoard() {
 		for(int i=0; i<this.getHeight();++i) {
 			for(int j=0; j<this.getWidth();++j) {
 				Candy c = new Candy(i,j);
@@ -129,19 +129,21 @@ public class Board {
 	 */
 	public boolean checkMove(Move m) {
 		
-		/* On effectue le mouvement sur le plateau */
-		executeMove(m);
+		/* On effectue le mouvement de manière temporaire sur le plateau */
+		this.executeMove(m);
 		
-		/* Si après avoir effectué le mouvement il n'y a aucun alignement créé */
-		if (this.detectAlignments().isEmpty()) {
-			/* On annule le mouvement */
-			executeMove(m);
-			return false;
+		List<Alignment> tempAlignments = this.detectAlignments();
+		
+		for(Alignment alignment:tempAlignments) {
+			if (alignment.getLength() > 2) {
+				this.executeMove(m);
+				return true;
+			}
 		}
 		
-		else {
-			return true;
-		}
+		this.executeMove(m);
+		return false;
+		
 	}
 
 	/**
@@ -241,17 +243,17 @@ public class Board {
 			//Parcours horizontal
 			for(int j=0; j<this.getWidth();++j) {
 				Candy currentCandy = grid[i][j];
-				// On checke si le Candy est deja dans un alignement vertical...
+				// On check si le bonbon est déjà dans un alignement vertical
 				if(!currentCandy.isWithinAlignment(Sens.VERTICAL, alignements)) {
-					// Si non on detecte les eventuels alignements
+					// Si non on détecte les éventuels alignements
 					Alignment vAlign = detectAlignment(currentCandy, Sens.VERTICAL);
 					if(vAlign.orientation == Sens.VERTICAL) {
 						alignements.add(vAlign);
 					}
 				}
-				// ... ou horizontal
+				// On check si le bonbon est déjà dans un alignement horizontal
 				if(!currentCandy.isWithinAlignment(Sens.HORIZONTAL, alignements)) {
-					// Si non on detecte les eventuels alignements
+					// Si non on détecte les éventuels alignements
 					Alignment hAlign = detectAlignment(currentCandy, Sens.HORIZONTAL);
 					if(hAlign.orientation == Sens.HORIZONTAL) {
 						alignements.add(hAlign);
@@ -259,7 +261,7 @@ public class Board {
 				}
 			}
 		}
-		// On a notre liste d'alignements, on n'a plus qu'a la parcourir pour set les Candy a supprimer
+		// On a notre liste d'alignements
 		return alignements;
 	}
 	
@@ -340,7 +342,7 @@ public class Board {
 	/**
 	 *	Méthode qui parcourt le plateau de jeu afin de faire jouer la gravité
 	 */
-	public void compacter(){
+	public void compacter() {
 		int x,y;
 		for(y=this.getWidth()-1; y>=0; y--) {
 			for(x=this.getHeight()-1; x>=0; x--) {
@@ -371,7 +373,7 @@ public class Board {
 	/**
 	 *	Méthode qui parcourt le plateau de jeu, et attribue une couleur vide aux bonbons à supprimer
 	 */
-	public void eclater(){
+	public void eclater() {
 		int x,y;
 		for(y=0; y<this.getWidth(); y++) {
 			for(x=0; x<this.getHeight(); x++) {

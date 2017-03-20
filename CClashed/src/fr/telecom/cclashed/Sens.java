@@ -2,8 +2,8 @@ package fr.telecom.cclashed;
 
 /**
  * Énumération permettant de déterminer le sens d'un alignement
- * @author myouf
- *
+ * @author TeamCClashed
+ * 
  */
 public enum Sens {
 	NONE,
