@@ -58,6 +58,9 @@ public class Move {
 		if ((this.candy1.equals(m.candy1)) && (this.candy2.equals(m.candy2))) {
 			return true;
 		}
+		else if ((this.candy1.equals(m.candy2)) && (this.candy2.equals(m.candy1))) {
+			return true;
+		}
 		else {
 			return false;
 		}
