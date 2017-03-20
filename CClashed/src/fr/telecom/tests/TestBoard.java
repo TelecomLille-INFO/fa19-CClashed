@@ -161,7 +161,7 @@ public class TestBoard {
 		{
 			for(int j = 0; j<plateau.getWidth();++j)
 			{
-				assertTrue(plateau.getCandy(i, j).getASupprimer());
+				assertTrue(plateau.getCandy(i, j).getColor() == 0);
 			}
 		}
 	}

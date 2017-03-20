@@ -137,7 +137,41 @@ public class Board {
 	 */
 	public void findPossibleMoves(){
 		possibleMoves.clear();
-		//TODO
+		int x,y;
+		for(y=0; y<this.getWidth(); y++) {
+			for(x=0; x<this.getHeight(); x++) {
+				
+				/* Cas des coins */
+				if ((this.getCandy(x,y).getCol() == 0) && (this.getCandy(x,y).getRow() == 0)) {
+					possibleMoves.add(new Move(getCandy(x,y),getCandy(x,y+1)));
+					possibleMoves.add(new Move(getCandy(x,y+1),getCandy(x,y)));
+					possibleMoves.add(new Move(getCandy(x,y),getCandy(x+1,y)));
+					possibleMoves.add(new Move(getCandy(x+1,y),getCandy(x,y)));
+				}
+				
+				if ((this.getCandy(x,y).getCol() == this.getWidth()) && (this.getCandy(x,y).getRow() == 0)) {
+					possibleMoves.add(new Move(getCandy(x,y),getCandy(x,y-1)));
+					possibleMoves.add(new Move(getCandy(x,y-1),getCandy(x,y)));
+					possibleMoves.add(new Move(getCandy(x,y),getCandy(x+1,y)));
+					possibleMoves.add(new Move(getCandy(x+1,y),getCandy(x,y)));
+				}
+				
+				if ((this.getCandy(x,y).getCol() == 0) && (this.getCandy(x,y).getRow() == this.getHeight())) {
+					/* A faire */
+				}
+				
+				if ((this.getCandy(x,y).getCol() == this.getWidth()) && (this.getCandy(x,y).getRow() == this.getHeight())) {
+					/* A faire */
+				}
+				
+				/* Cas des bords qui ne sont pas des coins */
+				/* A faire */
+				
+				/* Cas des cases centrales */
+				/* A faire */
+				
+			}
+		}
 	}
 
 	/**
@@ -152,8 +186,7 @@ public class Board {
 	 * Vérifier la condition d'arrêt de partie
 	 * @return True si la partie est terminée, false sinon
 	 */
-	public Boolean checkGameHasEnded()
-	{
+	public Boolean checkGameHasEnded() {
 		return possibleMoves.isEmpty();
 	}
 
