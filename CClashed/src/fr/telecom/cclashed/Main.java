@@ -168,7 +168,7 @@ public class Main {
 		    if (((x1+1 == x2 || x1-1 == x2) 
 			 && (y1 == y2)) || ((y1+1 == y2 || y1-1 == y2)) 
 			&& (x1 == x2))
-			//insÈrer ici Èthode pour switcher 2 points
+			//ins√©rer ici m√©thode pour switcher 2 points
 		    f.rafraichir();
 		}
 	}
