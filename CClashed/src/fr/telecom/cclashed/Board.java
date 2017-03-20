@@ -206,7 +206,7 @@ public class Board {
 			}
 		}
 		
-		//TODO : Supprimer de la liste les mouvements qui ne générent pas d'alignement
+		//TODO : Supprimer de la liste les mouvements qui ne générent pas d'alignement en utilisant la méthode checkMove
 		
 	}
 
@@ -215,7 +215,16 @@ public class Board {
 	 * @param m Mouvement à effectuer
 	 */
 	public void executeMove(Move m) {
-		System.out.println("Appel de la methode executeMove(Move m) de la classe Board");
+		/* Début d'implémentation d'executeMove */
+		/* Faut-il faire ceci ? */
+		this.getCandy(m.getCandy1().getRow(), m.getCandy1().getCol()).setRow(m.getCandy2().getRow());
+		this.getCandy(m.getCandy1().getRow(), m.getCandy1().getCol()).setCol(m.getCandy2().getCol());
+		this.getCandy(m.getCandy2().getRow(), m.getCandy2().getCol()).setRow(m.getCandy1().getRow());
+		this.getCandy(m.getCandy2().getRow(), m.getCandy2().getCol()).setCol(m.getCandy1().getCol());
+		
+		/* Ou ceci ? */
+		this.getCandy(m.getCandy1().getRow(), m.getCandy1().getCol()).setColor(m.getCandy2().getColor());
+		this.getCandy(m.getCandy2().getRow(), m.getCandy2().getCol()).setColor(m.getCandy1().getColor());
 	}
 
 	/**
