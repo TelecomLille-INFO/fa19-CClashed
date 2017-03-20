@@ -128,8 +128,20 @@ public class Board {
 	 * @return True si le mouvement est possible, false sinon
 	 */
 	public boolean checkMove(Move m) {
-		System.out.println("Appel de la methode checkMove(Move m) de la classe Board");
-		return true;
+		
+		/* On effectue le mouvement sur le plateau */
+		executeMove(m);
+		
+		/* Si après avoir effectué le mouvement il n'y a aucun alignement créé */
+		if (this.detectAlignments().isEmpty()) {
+			/* On annule le mouvement */
+			executeMove(m);
+			return false;
+		}
+		
+		else {
+			return true;
+		}
 	}
 
 	/**
@@ -183,14 +195,6 @@ public class Board {
 	 * @param m Mouvement à effectuer
 	 */
 	public void executeMove(Move m) {
-		/* Début d'implémentation d'executeMove */
-		/* Faut-il faire ceci ? */
-		this.getCandy(m.getCandy1().getRow(), m.getCandy1().getCol()).setRow(m.getCandy2().getRow());
-		this.getCandy(m.getCandy1().getRow(), m.getCandy1().getCol()).setCol(m.getCandy2().getCol());
-		this.getCandy(m.getCandy2().getRow(), m.getCandy2().getCol()).setRow(m.getCandy1().getRow());
-		this.getCandy(m.getCandy2().getRow(), m.getCandy2().getCol()).setCol(m.getCandy1().getCol());
-		
-		/* Ou ceci ? */
 		this.getCandy(m.getCandy1().getRow(), m.getCandy1().getCol()).setColor(m.getCandy2().getColor());
 		this.getCandy(m.getCandy2().getRow(), m.getCandy2().getCol()).setColor(m.getCandy1().getColor());
 	}
