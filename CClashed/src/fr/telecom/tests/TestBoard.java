@@ -135,11 +135,11 @@ public class TestBoard {
 				plateau.addCandy(c);
 			}
 		}
-		List<Alignment> alignements = plateau.detectAlignments();
+		List<Alignment> alignements = plateau.detectAllAlignments();
 		assertEquals(alignements.size(),plateau.getHeight() + plateau.getWidth());
 		
 		plateau.addCandy(new Candy(2,2,2));
-		alignements = plateau.detectAlignments();
+		alignements = plateau.detectAllAlignments();
 		assertEquals(alignements.size(),plateau.getHeight() + plateau.getWidth() + 2);
 	}
 	
@@ -155,7 +155,7 @@ public class TestBoard {
 				plateau.addCandy(c);
 			}
 		}
-		List<Alignment> alignements = plateau.detectAlignments();
+		List<Alignment> alignements = plateau.detectAllAlignments();
 		plateau.deleteCandiesInAlignments(alignements);
 		for(int i = 0; i<plateau.getHeight();++i)
 		{
