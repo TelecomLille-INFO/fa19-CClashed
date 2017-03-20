@@ -119,7 +119,7 @@ public class Board {
 	 * @return True si le tour de jeu est terminé, false sinon
 	 */
 	public boolean checkTurnHasEnded() {
-		return detectAlignments().isEmpty();
+		return detectAllAlignments().isEmpty();
 	}
 
 	/**
@@ -128,22 +128,18 @@ public class Board {
 	 * @return True si le mouvement est possible, false sinon
 	 */
 	public boolean checkMove(Move m) {
-		
 		/* On effectue le mouvement de manière temporaire sur le plateau */
 		this.executeMove(m);
 		
-		List<Alignment> tempAlignments = this.detectAlignments();
-		
-		for(Alignment alignment:tempAlignments) {
-			if (alignment.getLength() > 2) {
-				this.executeMove(m);
-				return true;
-			}
+		if (this.detectAllAlignments().isEmpty()) {
+			this.executeMove(m);
+			return false;
 		}
 		
-		this.executeMove(m);
-		return false;
-		
+		else {
+			this.executeMove(m);
+			return true;
+		}
 	}
 
 	/**
@@ -234,7 +230,7 @@ public class Board {
 	 * Méthode permettant de détecter les alignements
 	 * @return Liste des alignements détectés
 	 */
-	public List<Alignment> detectAlignments() {
+	public List<Alignment> detectAllAlignments() {
 		//Liste des alignements à remplir
 		List<Alignment> alignements = new ArrayList<Alignment>();
 		
@@ -261,7 +257,13 @@ public class Board {
 				}
 			}
 		}
-		// On a notre liste d'alignements
+		
+		// On ne retourne que les alignements de 3 ou plus
+		for(Alignment alignment:alignements) {
+			if (alignment.getLength() < 3) {
+				alignements.remove(alignment);
+			}
+		}
 		return alignements;
 	}
 	

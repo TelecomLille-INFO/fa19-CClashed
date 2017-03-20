@@ -25,7 +25,7 @@ public class Main {
 		//}
 		//do{
 		//	System.out.println(plateau);
-		//	List<Alignment> currentAlignments = plateau.detectAlignments();
+		//	List<Alignment> currentAlignments = plateau.detectAllAlignments();
 		//	for(Alignment al:currentAlignments) {
 		//		System.out.println(al);
 		//	}
