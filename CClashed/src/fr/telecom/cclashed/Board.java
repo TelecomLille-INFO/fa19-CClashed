@@ -138,75 +138,43 @@ public class Board {
 	public void findPossibleMoves(){
 		possibleMoves.clear();
 		int x,y;
+		Move moveBottom;
+		Move moveRight;
+		
 		for(y=0; y<this.getWidth(); y++) {
 			for(x=0; x<this.getHeight(); x++) {
 				
-				/* 1. Cas des coins (2 mouvements) */
-				/* Coin supérieur gauche */
-				if ((this.getCandy(x,y).getCol() == 0) && (this.getCandy(x,y).getRow() == 0)) {
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x,y+1)));
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x+1,y)));
+				/* Cases situées sur la dernière colonne */
+				if ((y == this.getWidth()-1) && (x != this.getHeight()-1)) {
+					moveBottom = new Move(this.getCandy(x,y),this.getCandy(x+1,y));
+					if (checkMove(moveBottom)) {
+						possibleMoves.add(moveBottom);
+					}
 				}
 				
-				/* Coin supérieur droit */
-				if ((this.getCandy(x,y).getCol() == this.getWidth()) && (this.getCandy(x,y).getRow() == 0)) {
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x,y-1)));
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x+1,y)));
+				/* Cases situées sur la dernière ligne */
+				else if ((y != this.getWidth()-1) && (x == this.getHeight()-1)) {
+					moveRight = new Move(this.getCandy(x,y),this.getCandy(x,y+1));
+					if (checkMove(moveRight)) {
+						possibleMoves.add(moveRight);
+					}
 				}
 				
-				/* Coin inférieur gauche */
-				if ((this.getCandy(x,y).getCol() == 0) && (this.getCandy(x,y).getRow() == this.getHeight())) {
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x-1,y)));
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x,y+1)));
+				/* Autres cases sauf celle situé en coin inférieur droit */
+				else if ((y != this.getWidth()-1) && (x != this.getHeight()-1)) {
+					moveBottom = new Move(this.getCandy(x,y),this.getCandy(x+1,y));
+					if (checkMove(moveBottom)) {
+						possibleMoves.add(moveBottom);
+					}
+					moveRight = new Move(this.getCandy(x,y),this.getCandy(x,y+1));
+					if (checkMove(moveRight)) {
+						possibleMoves.add(moveRight);
+					}
 				}
 				
-				/* Coin inférieur droit */
-				if ((this.getCandy(x,y).getCol() == this.getWidth()) && (this.getCandy(x,y).getRow() == this.getHeight())) {
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x-1,y)));
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x,y-1)));
-				}
-				
-				/* 2. Cas des bords qui ne sont pas des coins (3 mouvements) */
-				/* Bord gauche */
-				if ((this.getCandy(x,y).getCol() == 0) && (this.getCandy(x,y).getRow() > 0) && (this.getCandy(x,y).getRow() < this.getHeight())) {
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x-1,y)));
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x+1,y)));
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x,y+1)));
-				}
-				
-				/* Bord droit */
-				if ((this.getCandy(x,y).getCol() == this.getWidth()) && (this.getCandy(x,y).getRow() > 0) && (this.getCandy(x,y).getRow() < this.getHeight())) {
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x-1,y)));
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x+1,y)));
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x,y-1)));
-				}
-				
-				/* Bord supérieur */
-				if ((this.getCandy(x,y).getRow() == 0) && (this.getCandy(x,y).getCol() > 0) && (this.getCandy(x,y).getCol() < this.getWidth())) {
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x,y-1)));
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x,y+1)));
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x+1,y)));
-				}
-				
-				/* Bord inférieur */
-				if ((this.getCandy(x,y).getRow() == this.getHeight()) && (this.getCandy(x,y).getCol() > 0) && (this.getCandy(x,y).getCol() < this.getWidth())) {
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x,y-1)));
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x,y+1)));
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x-1,y)));
-				}
-				
-				/* 3. Cas des cases centrales (4 mouvements) */
-				if ((this.getCandy(x,y).getCol() > 0) && (this.getCandy(x,y).getCol() < this.getWidth()) && (this.getCandy(x,y).getRow() > 0) && (this.getCandy(x,y).getRow() < this.getHeight()) {
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x-1,y)));
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x+1,y)));
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x,y-1)));
-					possibleMoves.add(new Move(getCandy(x,y),getCandy(x,y+1)));
-				}
 				
 			}
 		}
-		
-		//TODO : Supprimer de la liste les mouvements qui ne générent pas d'alignement en utilisant la méthode checkMove
 		
 	}
 
