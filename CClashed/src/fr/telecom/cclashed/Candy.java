@@ -154,25 +154,47 @@ public class Candy {
 	}
 	
 	/**
-	 * Tester l'égalité de deux bonbons
-	 * @param c Bonbon dont on veut tester l'égalite avec l'instance courante
-	 * @return True si les deux bonbons sont égaux, false sinon
-	 */
-	public boolean equals(Candy c) {
-		if ((this.color == c.color) && (this.row == c.row) && (this.col == c.col)) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	
-	/**
 	 * Afficher l'état d'un bonbon
 	 * @return Chaîne de caractères représentant l'état d'un bonbon
 	 */
 	public String toString() {
 		return "/----------\n| Affichage du bonbon :\n|\n| Id couleur = " + this.color + "\n| N. ligne = " + this.row + "\n| N. colonne = " + this.col + "\n|\n----------/";
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + col;
+		result = prime * result + color;
+		result = prime * result + row;
+		return result;
+	}
+
+	/**
+	 * Tester l'égalité de deux bonbons
+	 * @param obj Objet à tester
+	 * @return True si les deux bonbons sont égaux, false sinon
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Candy other = (Candy) obj;
+		if (col != other.col)
+			return false;
+		if (color != other.color)
+			return false;
+		if (row != other.row)
+			return false;
+		return true;
 	}
 
 }

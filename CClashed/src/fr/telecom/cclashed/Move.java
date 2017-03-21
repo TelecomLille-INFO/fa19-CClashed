@@ -52,7 +52,7 @@ public class Move {
 	 * @param m Mouvement dont on veut tester l'égalité avec l'instance courante
 	 * @return True si les deux mouvements sont égaux, false sinon
 	 */
-	public boolean equals(Move m) {
+	public boolean isEqual(Move m) {
 		/* On fait appel à la méthode equals de la classe Candy */
 		if ((this.candy1.equals(m.candy1)) && (this.candy2.equals(m.candy2))) {
 			return true;
