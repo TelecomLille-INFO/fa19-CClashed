@@ -42,56 +42,66 @@ public class Main {
 		int x1, y1, x2, y2;
 
 		/* Affichage du plateau une première fois */
+		// Peut être sortir ce bloc du main pour le mettre dans une méthode displayBoard() ?
 		for (int i = 0; i < plateau.getHeight(); i++) {
-		    for (int j = 0; j < plateau.getWidth(); j++) {
-			switch(plateau.getCandy(i,j).getColor()) {
+			for (int j = 0; j < plateau.getWidth(); j++) {
+				
+				// La méthode getCandy n'utilise pas les même coordonnées que MG2D
+				// la grille du plateau a le 0,0 en haut à gauche, MG2D en bas à gauche
+				// diffHeight permet donc de calculer l'équivalent MG2D de l'ordonnée de getCandy
+				int diffHeight = plateau.getHeight() - i - 1;
+
+				// ATTENTION : Point(x, y) -> j = x, i = y et pas l'inverse
+				switch(plateau.getCandy(i,j).getColor()) {
 				case 0:
-					p = new Point(i*tailleC,j*tailleC);
+					p = new Point(j*tailleC,diffHeight*tailleC);
 					cases[i][j] = new Carre(Color.WHITE,p,tailleC,true);
 					f.ajouter(cases[i][j]);
 					break;
 
 				case 1:
-					p = new Point(i*tailleC,j*tailleC);
+					p = new Point(j*tailleC,diffHeight*tailleC);
 					cases[i][j] = new Carre(Color.ORANGE,p,tailleC,true);
 					f.ajouter(cases[i][j]);
 					break;
 
 				case 2:
-					p = new Point(i*tailleC,j*tailleC);
+					p = new Point(j*tailleC,diffHeight*tailleC);
 					cases[i][j] = new Carre(Color.GREEN,p,tailleC,true);
-			    	f.ajouter(cases[i][j]);
-			    	break;
+					f.ajouter(cases[i][j]);
+					break;
 
 				case 3:    
-					p = new Point(i*tailleC,j*tailleC);
+					p = new Point(j*tailleC,diffHeight*tailleC);
 					cases[i][j] = new Carre(Color.YELLOW,p,tailleC,true);
 					f.ajouter(cases[i][j]);
 					break;
 
 				case 4:
-					p = new Point(i*tailleC,j*tailleC);
+					p = new Point(j*tailleC,diffHeight*tailleC);
 					cases[i][j] = new Carre(Color.RED,p,tailleC,true);
 					f.ajouter(cases[i][j]);
 					break;
 
 				case 5:
-					p = new Point(i*tailleC,j*tailleC);
+					p = new Point(j*tailleC,diffHeight*tailleC);
 					cases[i][j] = new Carre(new Color(193,154,107),p,tailleC,true);
 					f.ajouter(cases[i][j]);
 					break;
 
 				}
-		    }
+			}
 		}
 		
 		System.out.println(plateau);
 		
-		while (true) {
+		// Bloc commenté pour simplifier le test d'affichage
+		// (en vrai je sais pas du tout ce que ça fait)
+/*		while (true) {
 		    plateau.eclater();
 		    f.rafraichir();
 
-		    /* Au fur et à mesure des passages dans la boucle infinie, les deux boucles et le switch vont permettre d'actualiser la couleur de la bulle en fonction de la valeur qu'elle contient */
+		    /* Au fur et à mesure des passages dans la boucle infinie, les deux boucles et le switch vont permettre d'actualiser la couleur de la bulle en fonction de la valeur qu'elle contient 
 		    for (int i = 0; i < plateau.getHeight(); i++) {
 		    	for (int j = 0; j < plateau.getWidth(); j++) {
 		    		switch(plateau.getCandy(i,j).getColor()){
@@ -123,7 +133,7 @@ public class Main {
 		    	}
 		    }
 
-		    /* Jeu en pause tant qu'il n'y a pas de clic */
+		     Jeu en pause tant qu'il n'y a pas de clic 
 		    while(!souris.getClicGauche())
 			try{Thread.sleep(0,5);}catch(Exception e){} // pour ralentir un peu l'application
 		    posS1=souris.getPosition();
@@ -136,10 +146,10 @@ public class Main {
 		    x2 = (int)((posS2.getX())/tailleC);
 		    y2 = (int)((posS2.getY())/tailleC);
 
-		    /* On vérifie que les bonbons sont voisins avant inversion */
+		     On vérifie que les bonbons sont voisins avant inversion 
 		    if (((x1+1 == x2 || x1-1 == x2) && (y1 == y2)) || ((y1+1 == y2 || y1-1 == y2)) && (x1 == x2))
 			//insérer ici méthode pour switcher 2 points
 		    f.rafraichir();
-		}
+		}*/
 	}
 }
