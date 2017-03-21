@@ -19,15 +19,15 @@ public class Candy {
 	/** Constante 'EMPTY' (entier : 0) pouvant être affectée à l'attribut color */
    	public static final int EMPTY=0;
    	/** Constante 'ORANGE' (entier : 1) pouvant être affectée à l'attribut color */
-   	public static final int ORANGE=1;
+   	public static final int BLUE=1;
     /** Constante 'GREEN' (entier : 2) pouvant être affectée à l'attribut color */
-    public static final int GREEN=2;
+    public static final int BROWN=2;
     /** Constante 'YELLOW' (entier : 3) pouvant être affectée à l'attribut color */
-    public static final int YELLOW=3;
+    public static final int ORANGE=3;
     /** Constante 'RED' (entier : 4) pouvant être affectée à l'attribut color */
-    public static final int RED=4;
+    public static final int PINK=4;
     /** Constante 'CAMEL' (entier : 5) pouvant être affectée à l'attribut color */
-    public static final int CAMEL=5;
+    public static final int YELLOW=5;
     	
 
 	/**

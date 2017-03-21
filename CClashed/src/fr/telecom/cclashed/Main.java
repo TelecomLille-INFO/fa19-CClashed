@@ -34,7 +34,7 @@ public class Main {
 		Point p;
 
 		/* Gestion facile de l'affichage des cases */
-		Carre cases[][] = new Carre[10][10];
+		Rectangle cases[][] = new Rectangle[10][10];
 
 		/* Points qui permettront de récupérer les deux cases à inverser */
 		Point posS1 = new Point(0,0);
@@ -55,37 +55,37 @@ public class Main {
 				switch(plateau.getCandy(i,j).getColor()) {
 				case 0:
 					p = new Point(j*tailleC,diffHeight*tailleC);
-					cases[i][j] = new Carre(Color.WHITE,p,tailleC,true);
+					cases[i][j] = new Rectangle(Color.WHITE,p,tailleC,tailleC,true);
 					f.ajouter(cases[i][j]);
 					break;
 
 				case 1:
 					p = new Point(j*tailleC,diffHeight*tailleC);
-					cases[i][j] = new Carre(Color.ORANGE,p,tailleC,true);
+					cases[i][j] = new Texture(Color.WHITE,"../../resources/img/blueCandy.png",p,tailleC,tailleC);
 					f.ajouter(cases[i][j]);
 					break;
 
 				case 2:
 					p = new Point(j*tailleC,diffHeight*tailleC);
-					cases[i][j] = new Carre(Color.GREEN,p,tailleC,true);
+					cases[i][j] = new Texture(Color.WHITE,"../../resources/img/brownCandy.png",p,tailleC,tailleC);
 					f.ajouter(cases[i][j]);
 					break;
 
 				case 3:    
 					p = new Point(j*tailleC,diffHeight*tailleC);
-					cases[i][j] = new Carre(Color.YELLOW,p,tailleC,true);
+					cases[i][j] = new Texture(Color.WHITE,"../../resources/img/orangeCandy.png",p,tailleC,tailleC);
 					f.ajouter(cases[i][j]);
 					break;
 
 				case 4:
 					p = new Point(j*tailleC,diffHeight*tailleC);
-					cases[i][j] = new Carre(Color.RED,p,tailleC,true);
+					cases[i][j] = new Texture(Color.WHITE,"../../resources/img/pinkCandy.png",p,tailleC,tailleC);
 					f.ajouter(cases[i][j]);
 					break;
 
 				case 5:
 					p = new Point(j*tailleC,diffHeight*tailleC);
-					cases[i][j] = new Carre(new Color(193,154,107),p,tailleC,true);
+					cases[i][j] = new Texture(Color.WHITE,"../../resources/img/yellowCandy.png",p,tailleC,tailleC);
 					f.ajouter(cases[i][j]);
 					break;
 
