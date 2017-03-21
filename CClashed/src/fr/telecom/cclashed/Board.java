@@ -243,7 +243,7 @@ public class Board {
 				if(!currentCandy.isWithinAlignment(Sens.VERTICAL, alignements)) {
 					// Si non on détecte les éventuels alignements
 					Alignment vAlign = detectAlignment(currentCandy, Sens.VERTICAL);
-					if(vAlign.orientation == Sens.VERTICAL) {
+					if(vAlign.orientation == Sens.VERTICAL && vAlign.getLength() >= 3) {
 						alignements.add(vAlign);
 					}
 				}
@@ -251,17 +251,10 @@ public class Board {
 				if(!currentCandy.isWithinAlignment(Sens.HORIZONTAL, alignements)) {
 					// Si non on détecte les éventuels alignements
 					Alignment hAlign = detectAlignment(currentCandy, Sens.HORIZONTAL);
-					if(hAlign.orientation == Sens.HORIZONTAL) {
+					if(hAlign.orientation == Sens.HORIZONTAL && hAlign.getLength() >= 3) {
 						alignements.add(hAlign);
 					}
 				}
-			}
-		}
-		
-		// On ne retourne que les alignements de 3 ou plus
-		for(Alignment alignment:alignements) {
-			if (alignment.getLength() < 3) {
-				alignements.remove(alignment);
 			}
 		}
 		return alignements;
@@ -277,26 +270,19 @@ public class Board {
 				int x = al.getStart().getCol();
 				int yStart = al.getStart().getRow();
 				int length = al.getLength();
-				// Check if alignment contains 3 Candys or more
-				if(length >= 3) {
-					for(int i = 0; i <= length - 1; ++i) {
-						grid[yStart+i][x].setColor(Candy.EMPTY);
-					}
+				for(int i = 0; i <= length - 1; ++i) {
+					grid[yStart+i][x].setColor(Candy.EMPTY);
 				}
 			}
 			else if(al.orientation.equals(Sens.HORIZONTAL)) {
 				int y = al.getStart().getRow();
 				int xStart = al.getStart().getCol();
 				int length = al.getLength();
-				// Check if alignment contains 3 Candys or more
-				if(length >= 3) {
-					for(int i = 0; i <= length - 1; ++i) {
-						grid[y][xStart+i].setColor(Candy.EMPTY);
-					}
+				for(int i = 0; i <= length - 1; ++i) {
+					grid[y][xStart+i].setColor(Candy.EMPTY);
 				}
 			}
 		}
-
 	}
 	
 	/**

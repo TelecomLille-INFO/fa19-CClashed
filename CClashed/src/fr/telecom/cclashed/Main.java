@@ -17,36 +17,25 @@ public class Main {
     
 	public static void main(String[] args) {
 
-		//Board plateau = new Board(6,6);
+		Board plateau = new Board(10,10);
+		for (int i = 0; i < 10; i++) {
+		    for (int j = 0; j < 10; j++) {
+		    	plateau.addCandy(i, j);
+		    }
+		}
 		
-		//for(int j = 2; j<5;++j){
-		//	Candy c = new Candy(3,3,j);
-		//	plateau.addCandy(c);
-		//}
-		//do{
-		//	System.out.println(plateau);
-		//	List<Alignment> currentAlignments = plateau.detectAllAlignments();
-		//	for(Alignment al:currentAlignments) {
-		//		System.out.println(al);
-		//	}
-		//	plateau.deleteCandiesInAlignments(currentAlignments);
-		//	plateau.eclater();
-		//}while(!plateau.checkTurnHasEnded());
+		List<Alignment> currentAlignments;
+		do{
+			currentAlignments = plateau.detectAllAlignments();
+			plateau.deleteCandiesInAlignments(currentAlignments);
+			plateau.eclater();
+		}while(!plateau.checkTurnHasEnded());
 
-		//System.out.println(plateau);
-		
-		//System.out.println("Ajout Candy rouge en 2/4\n");
-		//Candy redCandy = new Candy(4,2,4);
-		//plateau.addCandy(redCandy);
-		//System.out.println(plateau);*/
-		
 		/* Utilisation souris et clavier */
 		f.addMouseListener(souris);
 		f.getP().addMouseListener(souris);
 		f.getP().addMouseMotionListener(souris);
-
-		/* Création du plateau de jeu */
-		Board plateau = new Board(10,10); 
+		
 		Point p;
 
 		/* Gestion facile de l'affichage des cases */
@@ -100,15 +89,16 @@ public class Main {
 				}
 		    }
 		}
-
-		while (true) {
-		    /* On éclate plusieurs fois pour ne pas avoir de vide au début */
+		
+		System.out.println(plateau);
+/*		while (true) {
+		     On éclate plusieurs fois pour ne pas avoir de vide au début 
 		    for (int i = 0; i < 25; i++) {
 		    	plateau.eclater();
 		    }	
 		    f.rafraichir();
 
-		    /* Au fur et à mesure des passages dans la boucle infinie, les deux boucles et le switch vont permettre d'actualiser la couleur de la bulle en fonction de la valeur qu'elle contient */
+		     Au fur et à mesure des passages dans la boucle infinie, les deux boucles et le switch vont permettre d'actualiser la couleur de la bulle en fonction de la valeur qu'elle contient 
 		    for (int i = 0; i < 10; i++) {
 		    	for (int j = 0; j < 10; j++) {
 		    		switch(plateau.getCandy(i,j).getColor()){
@@ -140,7 +130,7 @@ public class Main {
 		    	}
 		    }
 
-		    /* Jeu en pause tant qu'il n'y a pas de clic */
+		     Jeu en pause tant qu'il n'y a pas de clic 
 		    while(!souris.getClicGauche())
 			try{Thread.sleep(0,5);}catch(Exception e){} // pour ralentir un peu l'application
 		    posS1=souris.getPosition();
@@ -153,10 +143,10 @@ public class Main {
 		    x2 = (int)((posS2.getX())/tailleC);
 		    y2 = (int)((posS2.getY())/tailleC);
 
-		    /* On vérifie que les bonbons sont voisins avant inversion */
+		     On vérifie que les bonbons sont voisins avant inversion 
 		    if (((x1+1 == x2 || x1-1 == x2) && (y1 == y2)) || ((y1+1 == y2 || y1-1 == y2)) && (x1 == x2))
 			//insérer ici méthode pour switcher 2 points
 		    f.rafraichir();
-		}
+		}*/
 	}
 }
