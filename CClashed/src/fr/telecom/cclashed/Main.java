@@ -18,11 +18,6 @@ public class Main {
 	public static void main(String[] args) {
 
 		Board plateau = new Board(10,10);
-		for (int i = 0; i < 10; i++) {
-		    for (int j = 0; j < 10; j++) {
-		    	plateau.addCandy(i, j);
-		    }
-		}
 		
 		List<Alignment> currentAlignments;
 		do{
@@ -47,8 +42,8 @@ public class Main {
 		int x1, y1, x2, y2;
 
 		/* Affichage du plateau une première fois */
-		for (int i = 0; i < 10; i++) {
-		    for (int j = 0; j < 10; j++) {
+		for (int i = 0; i < plateau.getHeight(); i++) {
+		    for (int j = 0; j < plateau.getWidth(); j++) {
 			switch(plateau.getCandy(i,j).getColor()) {
 				case 0:
 					p = new Point(i*tailleC,j*tailleC);
@@ -91,16 +86,14 @@ public class Main {
 		}
 		
 		System.out.println(plateau);
-/*		while (true) {
-		     On éclate plusieurs fois pour ne pas avoir de vide au début 
-		    for (int i = 0; i < 25; i++) {
-		    	plateau.eclater();
-		    }	
+		
+		while (true) {
+		    plateau.eclater();
 		    f.rafraichir();
 
-		     Au fur et à mesure des passages dans la boucle infinie, les deux boucles et le switch vont permettre d'actualiser la couleur de la bulle en fonction de la valeur qu'elle contient 
-		    for (int i = 0; i < 10; i++) {
-		    	for (int j = 0; j < 10; j++) {
+		    /* Au fur et à mesure des passages dans la boucle infinie, les deux boucles et le switch vont permettre d'actualiser la couleur de la bulle en fonction de la valeur qu'elle contient */
+		    for (int i = 0; i < plateau.getHeight(); i++) {
+		    	for (int j = 0; j < plateau.getWidth(); j++) {
 		    		switch(plateau.getCandy(i,j).getColor()){
 		    			case 0:
 		    				cases[i][j].setCouleur(Color.WHITE);
@@ -130,7 +123,7 @@ public class Main {
 		    	}
 		    }
 
-		     Jeu en pause tant qu'il n'y a pas de clic 
+		    /* Jeu en pause tant qu'il n'y a pas de clic */
 		    while(!souris.getClicGauche())
 			try{Thread.sleep(0,5);}catch(Exception e){} // pour ralentir un peu l'application
 		    posS1=souris.getPosition();
@@ -143,10 +136,10 @@ public class Main {
 		    x2 = (int)((posS2.getX())/tailleC);
 		    y2 = (int)((posS2.getY())/tailleC);
 
-		     On vérifie que les bonbons sont voisins avant inversion 
+		    /* On vérifie que les bonbons sont voisins avant inversion */
 		    if (((x1+1 == x2 || x1-1 == x2) && (y1 == y2)) || ((y1+1 == y2 || y1-1 == y2)) && (x1 == x2))
 			//insérer ici méthode pour switcher 2 points
 		    f.rafraichir();
-		}*/
+		}
 	}
 }

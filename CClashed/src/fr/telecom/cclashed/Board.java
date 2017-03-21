@@ -366,7 +366,6 @@ public class Board {
 		for(y=0; y<this.getWidth(); y++) {
 			for(x=0; x<this.getHeight(); x++) {
 				if(this.getCandy(x,y).getColor() == 0) {
-					System.out.println(this);
 					this.compacter();
 				}
 			}
