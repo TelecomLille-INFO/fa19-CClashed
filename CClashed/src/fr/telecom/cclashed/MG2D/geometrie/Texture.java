@@ -274,7 +274,7 @@ public class Texture extends Rectangle {
 		
 		try {
 			
-			URL url = getClass().getClassLoader().getResource ( chemin );
+			URL url = getClass().getResource ( chemin );
 		    img = ImageIO.read ( url );
 		}
 		

@@ -34,12 +34,14 @@ public class Main {
 		Point p;
 
 		/* Gestion facile de l'affichage des cases */
-		Rectangle cases[][] = new Rectangle[10][10];
+		Texture cases[][] = new Texture[10][10];
 
 		/* Points qui permettront de récupérer les deux cases à inverser */
 		Point posS1 = new Point(0,0);
 		Point posS2 = new Point(0,0);
 		int x1, y1, x2, y2;
+		
+		int diffHeight;
 
 		/* Affichage du plateau une première fois */
 		// Peut être sortir ce bloc du main pour le mettre dans une méthode displayBoard() ?
@@ -49,13 +51,13 @@ public class Main {
 				// La méthode getCandy n'utilise pas les même coordonnées que MG2D
 				// la grille du plateau a le 0,0 en haut à gauche, MG2D en bas à gauche
 				// diffHeight permet donc de calculer l'équivalent MG2D de l'ordonnée de getCandy
-				int diffHeight = plateau.getHeight() - i - 1;
+				diffHeight = plateau.getHeight() - i - 1;
 
 				// ATTENTION : Point(x, y) -> j = x, i = y et pas l'inverse
 				switch(plateau.getCandy(i,j).getColor()) {
 				case 0:
 					p = new Point(j*tailleC,diffHeight*tailleC);
-					cases[i][j] = new Rectangle(Color.WHITE,p,tailleC,tailleC,true);
+					cases[i][j] = new Texture(Color.WHITE,"../../resources/img/emptyCandy.png",p,tailleC,tailleC);
 					f.ajouter(cases[i][j]);
 					break;
 
@@ -95,61 +97,80 @@ public class Main {
 		
 		System.out.println(plateau);
 		
-		// Bloc commenté pour simplifier le test d'affichage
-		// (en vrai je sais pas du tout ce que ça fait)
-/*		while (true) {
-		    plateau.eclater();
+		
+		while (true) {
+			
+			do{
+				currentAlignments = plateau.detectAllAlignments();
+				plateau.deleteCandiesInAlignments(currentAlignments);
+				plateau.eclater();
+			}while(!plateau.checkTurnHasEnded());
+			
 		    f.rafraichir();
 
-		    /* Au fur et à mesure des passages dans la boucle infinie, les deux boucles et le switch vont permettre d'actualiser la couleur de la bulle en fonction de la valeur qu'elle contient 
+		    /* Au fur et à mesure des passages dans la boucle infinie, les deux boucles et le switch vont permettre d'actualiser la couleur de la bulle en fonction de la valeur qu'elle contient */ 
 		    for (int i = 0; i < plateau.getHeight(); i++) {
 		    	for (int j = 0; j < plateau.getWidth(); j++) {
+		    		
 		    		switch(plateau.getCandy(i,j).getColor()){
 		    			case 0:
-		    				cases[i][j].setCouleur(Color.WHITE);
+		    				cases[i][j].setImg("../../resources/img/emptyCandy.png");
 		    				break;
 
 		    			case 1:
-		    				cases[i][j].setCouleur(Color.ORANGE);
+		    				cases[i][j].setImg("../../resources/img/blueCandy.png");
 		    				break;
 
 		    			case 2:
-		    				cases[i][j].setCouleur(Color.GREEN);
+		    				cases[i][j].setImg("../../resources/img/brownCandy.png");
 		    				break;
 
 		    			case 3:    
-		    				cases[i][j].setCouleur(Color.YELLOW);  
+		    				cases[i][j].setImg("../../resources/img/orangeCandy.png"); 
 		    				break;
 
 		    			case 4:
-		    				cases[i][j].setCouleur(Color.RED);
+		    				cases[i][j].setImg("../../resources/img/pinkCandy.png");
 		    				break;
 
 		    			case 5:
-		    				cases[i][j].setCouleur(new Color(193,154,107));
+		    				cases[i][j].setImg("../../resources/img/yellowCandy.png");
 		    				break;
 		    		}
 			    f.rafraichir();
 		    	}
 		    }
 
-		     Jeu en pause tant qu'il n'y a pas de clic 
-		    while(!souris.getClicGauche())
-			try{Thread.sleep(0,5);}catch(Exception e){} // pour ralentir un peu l'application
-		    posS1=souris.getPosition();
+		    /* Jeu en pause tant qu'il n'y a pas de clic */
+		    while(!souris.getClicGauche()) {
+		    	try {
+		    		Thread.sleep(0,5);
+		    	}catch(Exception e){} // pour ralentir un peu l'application
+		    }
+			
+		    posS1 = souris.getPosition();
 		    x1 = (int)((posS1.getX())/tailleC);
 		    y1 = (int)((posS1.getY())/tailleC);
 
-		    while(!souris.getClicGauche())
-			try{Thread.sleep(0,5);}catch(Exception e){} // pour ralentir un peu l'application
-		    posS2=souris.getPosition();
+		    while(!souris.getClicGauche()) {
+		    	try {
+		    		Thread.sleep(0,5);
+		    	}catch(Exception e){} // pour ralentir un peu l'application
+		    }
+			
+		    posS2 = souris.getPosition();
 		    x2 = (int)((posS2.getX())/tailleC);
 		    y2 = (int)((posS2.getY())/tailleC);
 
-		     On vérifie que les bonbons sont voisins avant inversion 
-		    if (((x1+1 == x2 || x1-1 == x2) && (y1 == y2)) || ((y1+1 == y2 || y1-1 == y2)) && (x1 == x2))
-			//insérer ici méthode pour switcher 2 points
+		    /* On vérifie que les bonbons sont voisins avant inversion */
+		    if (((x1+1 == x2 || x1-1 == x2) && (y1 == y2)) || ((y1+1 == y2 || y1-1 == y2)) && (x1 == x2)) {
+		    	
+		    	Move move = new Move(plateau.getCandy(plateau.getHeight() - 1 - y1, x1), plateau.getCandy(plateau.getHeight() - 1 - y2, x2));
+		    	plateau.executeMove(move);
+		    	
+		    }
+			
 		    f.rafraichir();
-		}*/
+		}
 	}
 }
