@@ -6,18 +6,20 @@ import fr.telecom.cclashed.MG2D.*;
 import fr.telecom.cclashed.MG2D.geometrie.*;
 
 public class Main {
-
-	final static int largeur = 600;
-    final static int hauteur = 600;
-    final static int tailleC = 60;
-    static Fenetre f = new Fenetre ("CClashed", largeur, hauteur);
-    
-    //private final static Clavier clavier = new Clavier();
-    private final static Souris souris = new Souris(600);
-    
 	public static void main(String[] args) {
+		
+		int nbrLignes = 3;
+		int nbrColonnes = 4;
 
-		Board plateau = new Board(10,10);
+		Board plateau = new Board(nbrLignes,nbrColonnes);
+		
+		int largeur = nbrColonnes * 60;
+	    int hauteur = nbrLignes * 60;
+	    int tailleC = 60;
+	    Fenetre f = new Fenetre ("CClashed", largeur, hauteur);
+	    
+	    //private final static Clavier clavier = new Clavier();
+	    Souris souris = new Souris(hauteur);
 		
 		List<Alignment> currentAlignments;
 		do{
@@ -97,8 +99,9 @@ public class Main {
 		
 		System.out.println(plateau);
 		
+		plateau.findPossibleMoves();
 		
-		while (true) {
+		while (!plateau.checkGameHasEnded()) {
 			
 			do{
 				currentAlignments = plateau.detectAllAlignments();
@@ -151,6 +154,10 @@ public class Main {
 		    posS1 = souris.getPosition();
 		    x1 = (int)((posS1.getX())/tailleC);
 		    y1 = (int)((posS1.getY())/tailleC);
+		    
+		    // On colore l'arrière-plan du bonbon cliqué
+		    cases[plateau.getHeight() - 1 - y1][x1].setCouleur(Color.lightGray);
+		    f.rafraichir();
 
 		    while(!souris.getClicGauche()) {
 		    	try {
@@ -161,16 +168,56 @@ public class Main {
 		    posS2 = souris.getPosition();
 		    x2 = (int)((posS2.getX())/tailleC);
 		    y2 = (int)((posS2.getY())/tailleC);
-
+		    
+		    // On colore l'arrière-plan du bonbon cliqué
+		    cases[plateau.getHeight() - 1 - y2][x2].setCouleur(Color.lightGray);
+		    f.rafraichir();
+		    
 		    /* On vérifie que les bonbons sont voisins avant inversion */
 		    if (((x1+1 == x2 || x1-1 == x2) && (y1 == y2)) || ((y1+1 == y2 || y1-1 == y2)) && (x1 == x2)) {
-		    	
+
 		    	Move move = new Move(plateau.getCandy(plateau.getHeight() - 1 - y1, x1), plateau.getCandy(plateau.getHeight() - 1 - y2, x2));
-		    	plateau.executeMove(move);
 		    	
-		    }
+		    	if (plateau.checkMove(move)) {
+		    		cases[plateau.getHeight() - 1 - y1][x1].setCouleur(Color.GREEN);
+		    		cases[plateau.getHeight() - 1 - y2][x2].setCouleur(Color.GREEN);
+		    		try {
+		    			Thread.sleep(1000);
+		    		}catch(Exception e){}
+		    		plateau.executeMove(move);
+		    	}
+		    	
+		    	else if (!plateau.checkMove(move)) {
+		    		cases[plateau.getHeight() - 1 - y1][x1].setCouleur(Color.RED);
+		    		cases[plateau.getHeight() - 1 - y2][x2].setCouleur(Color.RED);
+		    		try {
+		    			Thread.sleep(1000);
+		    		}catch(Exception e){}
+		    	}
 			
-		    f.rafraichir();
+		    	cases[plateau.getHeight() - 1 - y1][x1].setCouleur(Color.WHITE);
+		    	cases[plateau.getHeight() - 1 - y2][x2].setCouleur(Color.WHITE);
+		    	f.rafraichir();
+		    
+		    }
+		    
+		    else {
+		    	cases[plateau.getHeight() - 1 - y1][x1].setCouleur(Color.RED);
+	    		cases[plateau.getHeight() - 1 - y2][x2].setCouleur(Color.RED);
+	    		f.rafraichir();
+	    		try {
+	    			Thread.sleep(1000);
+	    		}catch(Exception e){}
+	    		cases[plateau.getHeight() - 1 - y1][x1].setCouleur(Color.WHITE);
+		    	cases[plateau.getHeight() - 1 - y2][x2].setCouleur(Color.WHITE);
+		    	f.rafraichir();
+		    }
+		    
+		    plateau.findPossibleMoves();
+		    
 		}
+		
+		System.out.println("Partie terminée");
+		
 	}
 }

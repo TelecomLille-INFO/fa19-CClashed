@@ -132,12 +132,12 @@ public class Board {
 		this.executeMove(m);
 		
 		if (this.detectAllAlignments().isEmpty()) {
-			this.executeMove(m);
+			this.reverseMove(m);
 			return false;
 		}
 		
 		else {
-			this.executeMove(m);
+			this.reverseMove(m);
 			return true;
 		}
 	}
@@ -182,8 +182,11 @@ public class Board {
 					}
 				}
 				
-				
 			}
+		}
+		
+		for(Move move:possibleMoves) {
+			System.out.println(move);
 		}
 		
 	}
@@ -195,6 +198,15 @@ public class Board {
 	public void executeMove(Move m) {
 		this.getCandy(m.getCandy1().getRow(), m.getCandy1().getCol()).setColor(m.getCandy2().getColor());
 		this.getCandy(m.getCandy2().getRow(), m.getCandy2().getCol()).setColor(m.getCandy1().getColor());
+	}
+	
+	/**
+	 * Annuler un mouvement sur le plateau de jeu
+	 * @param m Mouvement à annuler
+	 */
+	public void reverseMove(Move m) {
+		this.getCandy(m.getCandy1().getRow(), m.getCandy1().getCol()).setColor(m.getCandy1().getColor());
+		this.getCandy(m.getCandy2().getRow(), m.getCandy2().getCol()).setColor(m.getCandy2().getColor());
 	}
 
 	/**
