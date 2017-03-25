@@ -18,16 +18,20 @@ public class Candy {
 	
 	/** Constante 'EMPTY' (entier : 0) pouvant être affectée à l'attribut color */
    	public static final int EMPTY=0;
-   	/** Constante 'ORANGE' (entier : 1) pouvant être affectée à l'attribut color */
+   	/** Constante 'BLUE' (entier : 1) pouvant être affectée à l'attribut color */
    	public static final int BLUE=1;
-    /** Constante 'GREEN' (entier : 2) pouvant être affectée à l'attribut color */
+    /** Constante 'BROWN' (entier : 2) pouvant être affectée à l'attribut color */
     public static final int BROWN=2;
-    /** Constante 'YELLOW' (entier : 3) pouvant être affectée à l'attribut color */
+    /** Constante 'ORANGE' (entier : 3) pouvant être affectée à l'attribut color */
     public static final int ORANGE=3;
-    /** Constante 'RED' (entier : 4) pouvant être affectée à l'attribut color */
+    /** Constante 'PINK' (entier : 4) pouvant être affectée à l'attribut color */
     public static final int PINK=4;
-    /** Constante 'CAMEL' (entier : 5) pouvant être affectée à l'attribut color */
+    /** Constante 'YELLOW' (entier : 5) pouvant être affectée à l'attribut color */
     public static final int YELLOW=5;
+    /** Constante 'GREEN' (entier : 5) pouvant être affectée à l'attribut color */
+    public static final int GREEN=6;
+    /** Constante 'RED' (entier : 5) pouvant être affectée à l'attribut color */
+    public static final int RED=7;
     	
 
 	/**
@@ -36,7 +40,7 @@ public class Candy {
      * @param col Colonne
      */
 	public Candy(int row, int col) {
-		this.color = (int)(Math.random()*(5)+1);
+		this.color = (int)(Math.random()*(7)+1);
 		this.row = row;
 		this.col = col;
 	}
@@ -83,7 +87,7 @@ public class Candy {
 	 * Affecter une couleur aléatoire à un bonbon
 	 */
 	public void setRandomColor() {
-		this.color = (int)(Math.random()*(5)+1);
+		this.color = (int)(Math.random()*(7)+1);
 	}
 	
 	/**
