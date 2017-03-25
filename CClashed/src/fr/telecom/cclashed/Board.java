@@ -185,10 +185,6 @@ public class Board {
 			}
 		}
 		
-		for(Move move:possibleMoves) {
-			System.out.println(move);
-		}
-		
 	}
 
 	/**
@@ -214,6 +210,7 @@ public class Board {
 	 * @return True si la partie est terminée, false sinon
 	 */
 	public Boolean checkGameHasEnded() {
+		this.findPossibleMoves();
 		return possibleMoves.isEmpty();
 	}
 
