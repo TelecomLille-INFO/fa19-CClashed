@@ -92,6 +92,18 @@ public class Main {
 					cases[i][j] = new Texture(Color.WHITE,"../../resources/img/yellowCandy.png",p,tailleC,tailleC);
 					f.ajouter(cases[i][j]);
 					break;
+					
+				case 6:
+					p = new Point(j*tailleC,diffHeight*tailleC);
+					cases[i][j] = new Texture(Color.WHITE,"../../resources/img/greenCandy.png",p,tailleC,tailleC);
+					f.ajouter(cases[i][j]);
+					break;
+					
+				case 7:
+					p = new Point(j*tailleC,diffHeight*tailleC);
+					cases[i][j] = new Texture(Color.WHITE,"../../resources/img/redCandy.png",p,tailleC,tailleC);
+					f.ajouter(cases[i][j]);
+					break;
 
 				}
 			}
@@ -202,6 +214,14 @@ public class Main {
 
 		    			case 5:
 		    				cases[i][j].setImg("../../resources/img/yellowCandy.png");
+		    				break;
+		    				
+		    			case 6:
+		    				cases[i][j].setImg("../../resources/img/greenCandy.png");
+		    				break;
+		    				
+		    			case 7:
+		    				cases[i][j].setImg("../../resources/img/redCandy.png");
 		    				break;
 		    		}
 			    f.rafraichir();
