@@ -110,7 +110,7 @@ public class TestCandy {
 	@Test
 	public void testToString() {
 		Candy bonbon = new Candy(1,2,3);
-		String expected = "/----------\n| Affichage du bonbon :\n|\n| Id couleur = 1\n| N° ligne = 2\n| N° colonne = 3\n|\n----------/";
+		String expected = "/----------\n| Affichage du bonbon :\n|\n| Id couleur = 1\n| N. ligne = 2\n| N. colonne = 3\n|\n----------/";
 		String unexpected = "test";
 		assertEquals(expected,bonbon.toString());
 		assertNotEquals(unexpected, bonbon.toString());

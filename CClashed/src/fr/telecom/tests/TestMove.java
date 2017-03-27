@@ -25,11 +25,11 @@ public class TestMove {
 		Candy bonbon2 = new Candy(3,2,1);
 		Move move1 = new Move(bonbon1,bonbon2);
 		Move move2 = new Move(move1);
-		assertTrue(move1.equals(move2));
+		assertTrue(move1.isEqual(move2));
 	}
 
 	@Test
-	public void testEqualsMove() {
+	public void testIsEqualMove() {
 		Candy bonbon1 = new Candy(1,2,3);
 		Candy bonbon2 = new Candy(3,2,1);
 		Move move1 = new Move(bonbon1,bonbon2);
@@ -39,8 +39,8 @@ public class TestMove {
 		Candy bonbon5 = new Candy(2,2,2);
 		Candy bonbon6 = new Candy(3,2,1);
 		Move move3 = new Move(bonbon5,bonbon6);
-		assertTrue(move1.equals(move2));
-		assertFalse(move1.equals(move3));
+		assertTrue(move1.isEqual(move2));
+		assertFalse(move1.isEqual(move3));
 	}
 	
 	@Test
