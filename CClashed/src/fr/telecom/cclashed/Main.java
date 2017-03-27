@@ -8,8 +8,8 @@ import fr.telecom.cclashed.MG2D.geometrie.*;
 public class Main {
 	public static void main(String[] args) {
 		
-		int nbrLignes = 8;
-		int nbrColonnes = 8;
+		int nbrLignes = 12;
+		int nbrColonnes = 15;
 
 		Board plateau = new Board(nbrLignes,nbrColonnes);
 		
@@ -41,7 +41,7 @@ public class Main {
 		Point p;
 
 		/* Gestion facile de l'affichage des cases */
-		Texture cases[][] = new Texture[10][10];
+		Texture cases[][] = new Texture[nbrLignes][nbrColonnes];
 
 		/* Points qui permettront de récupérer les deux cases à inverser */
 		Point posS1 = new Point(0,0);
