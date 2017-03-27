@@ -22,11 +22,16 @@ public class Main {
 	    Souris souris = new Souris(hauteur);
 		
 		List<Alignment> currentAlignments;
-		do {
-			currentAlignments = plateau.detectAllAlignments();
-			plateau.deleteCandiesInAlignments(currentAlignments);
-			plateau.eclater();
-		}while(!plateau.checkTurnHasEnded());
+		do
+		{
+			plateau.resetBoard();
+			do {
+				currentAlignments = plateau.detectAllAlignments();
+				plateau.deleteCandiesInAlignments(currentAlignments);
+				plateau.eclater();
+			}while(!plateau.checkTurnHasEnded());
+		}
+		while(plateau.checkGameHasEnded());
 
 		/* Utilisation souris et clavier */
 		f.addMouseListener(souris);
