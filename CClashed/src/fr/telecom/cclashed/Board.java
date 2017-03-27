@@ -45,7 +45,7 @@ public class Board {
 	/**
 	 * Méthode permettant de réinitialiser le plateau
 	 */
-	private void resetBoard() {
+	protected void resetBoard() {
 		for(int i=0; i<this.getHeight();++i) {
 			for(int j=0; j<this.getWidth();++j) {
 				Candy c = new Candy(i,j);
@@ -184,7 +184,7 @@ public class Board {
 				
 			}
 		}
-		
+
 	}
 
 	/**
