@@ -8,8 +8,8 @@ import fr.telecom.cclashed.MG2D.geometrie.*;
 public class Main {
 	public static void main(String[] args) {
 		
-		int nbrLignes = 12;
-		int nbrColonnes = 15;
+		int nbrLignes = 8;
+		int nbrColonnes = 8;
 
 		Board plateau = new Board(nbrLignes,nbrColonnes);
 		
